@@ -7,114 +7,48 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  
-  <ion-card class="welcome-card">
-    <ion-slides #mySlider pager="true" [options]="sliderOpts">      
-      <ion-slide>        
+  <div class="sliderWrap">
+    <ion-slides #mySlider pager="false" [options]="sliderOpts">
+      <ion-slide>
         <img src="/assets/images/slider/mhsmain3.jpg" alt="" />
       </ion-slide>
-      <ion-slide>        
+      <ion-slide>
         <img src="/assets/images/slider/mhsmain4.jpg" alt="" />
-      </ion-slide>        
-    </ion-slides>    
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col>Hire Trusted Genealogists and DNA Specialists who will treat your research project as their own family.</ion-col>
-        </ion-row>
-      </ion-grid>             
-      <ion-button expand="block" routerLink="/home-search">ARE YOU LOOKING FOR</ion-button>
-    </ion-card-content>
-  </ion-card>
-  <!--<ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Book with Genealogists you can trust</ion-card-subtitle>
-      <ion-card-title>BOOK WITH FAMILY RESEARCHERS AND DNA SPECIALISTS YOU CAN TRUST</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="2"><ion-icon name="search"></ion-icon></ion-col>
-          <ion-col size="10">All new genealogists and DNA specialists pass a basic background check</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="2"><ion-icon name="card"></ion-icon></ion-col>
-          <ion-col size="10">All genealogists and DNA specialists provide a detailed profile and personal information</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="2"><ion-icon name="medal"></ion-icon></ion-col>
-          <ion-col size="10">All genealogists and DNA specialists are approved by our team</ion-col>
-        </ion-row>        
-      </ion-grid>
-      <ion-button color="primary" expand="block" 
-      routerLink="/search-main" routerDirection="root">Book Your Next Heirstorian Now</ion-button>      
-    </ion-card-content>
-  </ion-card>-->
-  <ion-grid>
-    <ion-row>
-      <ion-col>All services booked on MyHeirStory are backed by the MyHeirStory Guarantee and our Booking Protection.</ion-col>
-    </ion-row>
-  </ion-grid>
-  <!--<ion-slides pager="true" [options]="slideOpts">
-    <ion-slide>        
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Discover trusted Genealogists and DNA Specialists</ion-card-subtitle>
-          <ion-card-title>STEP 1</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Search through our lists of qualified genealogists and DNA specalists.
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-    <ion-slide>        
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Book & Pay on MyHeirStory</ion-card-subtitle>
-          <ion-card-title>STEP 2</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Book and pay securely through the website or app.
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-    <ion-slide>        
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Relax</ion-card-subtitle>
-          <ion-card-title>STEP 3</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Get the MyHeirStory Guarantee and booking protection.
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>        
-  </ion-slides>-->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle></ion-card-subtitle>
-      <ion-card-title>CONNECT ANYWHERE</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="6"><img src="/assets/images/developer-options.jpg" alt="" /></ion-col>
-          <ion-col size="6"><img src="/assets/images/ios-logo.jpeg" alt="" /></ion-col>
-        </ion-row>                
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
-  <!--<ion-card>
-    <ion-card-header>
-      <ion-card-subtitle></ion-card-subtitle>
-      <ion-card-title>About Us</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col>In 2019 professional genealogists, with a Silicon Valley background, came together to form myheirstory.com™, the first and only digital platform for anyone seeking to search, hire, pay, and rate genealogists, DNA specialists, and general family researchers. Whether you need help understanding our DNA results or wanting to grow your family tree, MyHeirStory connects you with genealogists who will treat your research as their own family project. We bring together regularly used technology and personal self-discovery that will certainly provide you with a greater sense of identity and your place in the world.</ion-col>
-        </ion-row>                
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>-->
+      </ion-slide>
+    </ion-slides>
+    <div class="captionWrap center">
+      <h6>Hire Trusted Genealogists and DNA Specialists who will treat your research project as their own family.</h6>
+    </div>
+    <div class="captionWrap bottom">
+      <div class="btnWrap">
+        <ion-button color="light" expand="block" fill="outline" routerLink="/home-search">Search</ion-button>
+        <ion-button color="light" expand="block" fill="outline" routerLink="/home-search">Signup</ion-button>
+      </div>
+    </div>
+
+  </div>
+  <div hidden>
+    <ion-grid>
+      <ion-row>
+        <ion-col>All services booked on MyHeirStory are backed by the MyHeirStory Guarantee and our Booking Protection.
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title>CONNECT ANYWHERE</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6"><img src="/assets/images/developer-options.jpg" alt="" /></ion-col>
+            <ion-col size="6"><img src="/assets/images/ios-logo.jpeg" alt="" /></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
