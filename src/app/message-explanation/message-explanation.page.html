@@ -1,0 +1,158 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-buttons fill="clear" slot="end">
+			<ion-button class="filter" (click)="dismissModal()">
+				<ion-icon name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>Message Explanation</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">
+	<ion-grid>
+		<ion-row class="ion-align-items-center line">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="mail" color="dark"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>1. It will lead you to the INBOX section where you found all threads.</p>	
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="mail" color="danger"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>
+				1. Question which is not answered.<br>
+				2. An answer is given by Researcher whic is still unread.
+				</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="checkmark-circle" color="dark"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>1. Question is Answered</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="close-circle" color="dark"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>1. Question is Un-Answered</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="create" color="dark"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>1. Question is answered, you may view the conversation.</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="create" color="danger"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>1. The Question is still un-answered, you may give answer by clicking.</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="eye" color="dark"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>
+				1. Question is answered, you may view the conversation.<br>
+				2. If you have further question you may ask.
+				</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="eye" color="danger"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>1. Question is answered, have a look.</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="ion-align-items-center">
+			<ion-col size="2" class="ion-align-self-center">
+				<h1><ion-icon name="trash" color="dark"></ion-icon></h1>
+			</ion-col>
+			<ion-col size="10">
+				<p>1. Delete thread(all conversation).</p>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<!--<ion-list>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="mail" color="dark"></ion-icon>
+			</ion-avatar>			
+			<p>1. It will lead you to the INBOX section where you found all threads.</p>
+		</ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="mail" color="danger"></ion-icon>
+			</ion-avatar>			
+			<p>
+			1. Question which is not answered.<br>
+			2. An answer is given by Researcher whic is still unread.
+			</p>
+		</ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="checkmark-circle" color="dark"></ion-icon>
+			</ion-avatar>			
+			<p>1. Question is Answered</p>
+		</ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="close-circle" color="dark"></ion-icon>
+			</ion-avatar>			
+			<p>1. Question is Un-Answered</p>
+		</ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="create" color="dark"></ion-icon>
+			</ion-avatar>			
+			<p>1. Question is answered, you may view the conversation.</p>
+		</ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="create" color="danger"></ion-icon>
+			</ion-avatar>			
+			<p>1. The Question is still un-answered, you may give answer by clicking.</p>
+		</ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="eye" color="dark"></ion-icon>
+			</ion-avatar>			
+			<p>
+			1. Question is answered, you may view the conversation.<br>
+			2. If you have further question you may ask.
+			</p>
+		</ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon name="eye" color="danger"></ion-icon>
+			</ion-avatar>			
+			<p>1. Question is answered, have a look.</p>
+		</ion-item>
+		<ion-item lines="none">			
+			<ion-avatar slot="start">
+				<ion-icon name="trash" color="dark"></ion-icon>
+			</ion-avatar>			
+			<p>1. Delete thread(all conversation).</p>
+		</ion-item>
+	</ion-list>-->
+</ion-content>

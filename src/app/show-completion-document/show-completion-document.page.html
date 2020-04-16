@@ -1,0 +1,58 @@
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Show Completion Document</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">	
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<ion-button fill="outline" color="primary" expand="block" (click)="show_completion_document()">Show Document</ion-button>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="view_as=='heirstorian' && booking_completion_status==0">
+			<ion-col>User has not signed the completion document.</ion-col>
+		</ion-row>
+	</ion-grid>
+	<form [formGroup]="signingCompletionDocument" 
+	(ngSubmit)="make_document_completed(signingCompletionDocument.value)" 
+	[ngClass]="{'make_hidden_form' : view_as=='heirstorian', 'make_hidden' : user_signature!='null'}">
+	<ion-input type="hidden" formControlName="booking_id"></ion-input>
+	<ion-input type="hidden" formControlName="email"></ion-input>
+	<ion-input type="hidden" formControlName="heistorian_id"></ion-input>
+	<ion-input type="hidden" formControlName="cost"></ion-input>
+	<h5>I agree that the work you are giving me is what I want.</h5>
+	<h3 align="center">Add you signature</h3>	
+	<div class="signature-pad">
+		<div class="signature-pad--body">
+			<canvas #sPad  width="300" height="500" style="touch-action: none;"></canvas>
+		</div>
+	</div>
+	<div class="btnWrap">
+		<div class="btnWrapCol btnWrapColLarge">
+			<ion-button class="login-btn" type="submit" expand="block" 
+			[disabled]="!signingCompletionDocument.valid">Save</ion-button>
+		</div>
+		<div class="btnWrapCol btnWrapColSmall">
+			<ion-button class="login-btn"  expand="block" (click)="clearSignature()">Clear</ion-button>
+		</div>
+	</div>
+	</form>
+	<ion-grid *ngIf="user_signature!='null'">
+		<ion-row>
+			<ion-col><h3>I agree that the work you are giving me is what I want.</h3></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item no-padding><h5>Signature</h5></ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col><img src="{{user_signature}}"></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

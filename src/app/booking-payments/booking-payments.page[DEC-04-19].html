@@ -1,0 +1,61 @@
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Confirm & Pay</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="bg-transparant">	
+<ion-card class="welcome-card" *ngIf="payment_method_heirstorian=='strip'">	
+	<ion-card-header>
+		<ion-card-subtitle>${{resultData.cost}}</ion-card-subtitle>
+		<ion-card-title>Pay with Stripe</ion-card-title>
+	</ion-card-header>
+	<ion-card-content>
+    <h2>You are about to book services of Researcher {{heirstorian_first_name}} {{heirstorian_last_name}}</h2>
+  	<form [formGroup]="paymentWithStripForm" (ngSubmit)="make_payment_with_stripe(paymentWithStripForm.value)">
+  	<ion-input type="hidden" formControlName="card_payable"></ion-input>
+  	<ion-row>
+  		<ion-col size="12">
+  			<ion-label position="floating">Card Number</ion-label>
+  			<ion-input type="text" placeholder="4242424242424242" formControlName="card_number"></ion-input>
+  		</ion-col>
+  	</ion-row>
+  	<ion-row>
+  		<ion-col size="6">
+  			<ion-label position="floating">Month of Expire</ion-label>
+  			<ion-input type="text" placeholder="Month of Expire" formControlName="expiry_month"></ion-input>
+  		</ion-col>
+  		<ion-col size="6">
+  			<ion-label position="floating">Year of Expire</ion-label>
+  			<ion-input type="text" placeholder="Year of Expire" formControlName="expiry_year"></ion-input>
+  		</ion-col>
+  	</ion-row>
+  	<ion-row>
+  		<ion-col size="12">
+  			<ion-label position="floating">CVV</ion-label>
+  			<ion-input type="text" placeholder="CVV" formControlName="cvv_code"></ion-input>
+  		</ion-col>
+  	</ion-row>
+  	<ion-row>
+  		<ion-col size="12">
+  			<ion-button type="submit" color="primary" [disabled]="!paymentWithStripForm.valid">Pay Now</ion-button>
+        <ion-button color="danger" (click)="cancel_my_booking(booking_id)">Cancel Booking</ion-button>
+  		</ion-col>
+  	</ion-row>
+  	</form>
+	</ion-card-content>
+</ion-card>
+<ion-card class="welcome-card" *ngIf="payment_method_heirstorian=='paypal'"> 
+  <ion-card-header>
+    <ion-card-subtitle>${{resultData.cost}}</ion-card-subtitle>
+    <ion-card-title>Pay with Paypal</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <h2>You are about to book services of Researcher {{heirstorian_first_name}} {{heirstorian_last_name}}</h2>
+    <ion-button expand="full" color="success" (click)="payWithPaypal()">Pay Now</ion-button>
+    <ion-button color="danger" (click)="cancel_my_booking(booking_id)">Cancel Booking</ion-button>
+  </ion-card-content>
+</ion-card>	
+</ion-content>

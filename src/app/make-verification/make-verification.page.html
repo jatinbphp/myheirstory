@@ -1,0 +1,37 @@
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">      
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Verification</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">	
+	<ion-card class="welcome-card">
+		<ion-card-content>	  			
+		<form [formGroup]="VerificationForm" (ngSubmit)="verify_my_code(VerificationForm.value)">
+			<ion-input type="hidden" formControlName="from_page"></ion-input>
+			<ion-input type="hidden" formControlName="email"></ion-input>			
+			<div class="ion-list">          
+			<ion-item lines="none">
+				<ion-label position="floating" floating>Enter Your Code Below</ion-label>
+				<ion-input type="text" formControlName="code"></ion-input>
+			</ion-item>
+			<!--VALIDATION-->
+			<div class="validation-errors">
+				<ng-container *ngFor="let validation of validation_messages.code">
+					<div class="error-message" *ngIf="VerificationForm.get('code').hasError(validation.type) && (VerificationForm.get('code').dirty || VerificationForm.get('code').touched)">
+					<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+					</div>
+				</ng-container>
+			</div>
+			<!--VALIDATION-->
+			<ion-button type="submit" fill="outline" color="light" expand="block" 
+			[disabled]="!VerificationForm.valid" class="login-btn">Submit</ion-button>	      	      
+			</div>
+		</form>
+		<p class="ion-text-center" (click)="send_verification_code()">Send another code.</p>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

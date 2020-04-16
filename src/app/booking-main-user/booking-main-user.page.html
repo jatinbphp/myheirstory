@@ -1,0 +1,62 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>User</ion-title>
+		<!--<ion-buttons slot="end">
+	      <button ion-button icon-only (click)="switchStyle()">
+	        <ion-icon name="bulb"></ion-icon>
+	      </button>
+	    </ion-buttons>-->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!--REFRESHER-->
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content
+		  pullingIcon="arrow-dropdown"
+		  pullingText="Pull to refresh"
+		  refreshingSpinner="circles">
+		</ion-refresher-content>
+	</ion-refresher>
+	<!--REFRESHER-->
+	<ion-item *ngIf="resultData?.length === 0" lines="none">
+		<p class="item item-text-wrap">No booking found.</p>
+	</ion-item>
+	<ion-list *ngFor="let bookings of resultData; let i=index;" class="messageList">
+		<ion-item lines="none" class="ion-no-padding">
+			<div class="messageList-box" [ngClass]="{'unread' : bookings.booking_status=='0'}">
+				<div class="messageList-header">
+					<span class="messagesAuth">{{ bookings.first_name }} {{ bookings.last_name }}</span>
+					<span class="messagesAuth">#{{ bookings.booking_id }}</span>
+				</div>
+				<div class="messageList-header">
+					<span class="messagesAuth">{{ bookings.package_selected }} Hours</span>
+					<span class="messagesAuth">${{ bookings.booking_cost }}</span>
+				</div>						
+				<div class="messageList-content justify-space-between">
+					<span class="messagesAuth">{{bookings.transaction_id}}</span>
+					<span class="messagesAuth">
+					<img class="stripeBtn" src="./assets/images/paypal-logo.png" width="50" *ngIf="bookings.booking_payment_option=='paypal'">
+					<img class="stripeBtn" src="./assets/images/stripe-logo.png" width="50" *ngIf="bookings.booking_payment_option=='stripe'">
+					</span>
+				</div>
+				<div class="messageList-content">			
+				{{ bookings.service_name }}<!--<br>{{ bookings.description }}--></div>
+				<div class="messageListBtns">
+					<ion-icon name="ios-checkmark-circle-outline" 
+					*ngIf="bookings.booking_status=='1'"></ion-icon>
+					<ion-icon name="ios-close-circle-outline" 
+					*ngIf="bookings.booking_status=='0'"></ion-icon>		    	
+			    	<ion-icon color="primary" slot="icon-only" name="document" 
+			    	*ngIf="bookings.booking_completion.length > 0 && bookings.booking_completion[0].booking_completion_status==1" 
+			    	(click)="show_completion_document(bookings.booking_id,bookings.email)"></ion-icon>
+			    	<ion-icon color="danger" slot="icon-only" name="alarm" 
+			    	*ngIf="bookings.booking_completion.length > 0 && bookings.booking_completion[0].booking_completion_status==0" 
+			    	(click)="show_completion_document(bookings.booking_id,bookings.email)"></ion-icon>
+			    	<ion-icon color="primary" slot="icon-only" name="trash" 
+			    	(click)="deleteConfirm(bookings.booking_id)"></ion-icon>
+				</div>
+			</div>
+		</ion-item>			
+	</ion-list>		
+</ion-content>

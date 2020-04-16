@@ -1,0 +1,81 @@
+ion-header.main_headere{
+    --background: #232277;
+    background: #232277;
+    ion-toolbar{
+      border-bottom: 1px solid #c8c7cc;
+      background: #232277;
+      --background: #232277;
+        ion-title {
+          color: white;
+        }
+        ion-buttons{
+          .filter{
+            background: #fff;
+            padding: 6px 10px;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            ion-icon{
+                padding-left: 7px;
+            }
+          }
+        }
+        ion-menu-button{
+          color: white;
+        }
+    }
+}
+
+.messageList {
+    margin: 10px;
+    padding:0;
+	.messageList-box {
+	    padding: 15px;
+	    width: 100%;
+	    color:rgba(0,0,0,0.6);
+	    &.unread{
+	    color:rgba(0,0,0,1);
+	    }
+		.messageList-header {
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-between;
+		    span.messagesAuth{
+		    	font-size:110%;
+		    	font-weight: 500;
+		    }
+		    span.messagesDate{
+		    	font-size: 90%;
+		    }
+		}
+		.messageList-content{
+			font-size: 14px;
+		    font-weight: normal;
+		      white-space: nowrap;
+			  overflow: hidden;
+			  text-overflow: ellipsis;
+			  &.justify-space-between{
+				justify-content: space-between;
+				display: flex;
+				align-items: center;
+				img{
+					display: inline-block;
+				}
+			  }
+		}
+		.messageListBtns {
+		    display: flex;
+		    align-items: center;
+		    margin-top: 10px;
+		    ion-icon{
+		    	margin-right: auto;
+	    	    width: 20px;
+			    height: 20px;
+			    &:nth-of-type(1n+2){
+			    	margin-left: 12px;
+			    	margin-right: 0;
+			    }
+		    }
+		}
+	}
+}

@@ -1,0 +1,67 @@
+<ion-header>
+	<ion-toolbar>		
+		<ion-title>User</ion-title>
+		<!--<ion-buttons slot="end">
+	      <button ion-button icon-only (click)="switchStyle()">
+	        <ion-icon name="bulb"></ion-icon>
+	      </button>
+	    </ion-buttons>-->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!--REFRESHER-->
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content
+		  pullingIcon="arrow-dropdown"
+		  pullingText="Pull to refresh"
+		  refreshingSpinner="circles">
+		</ion-refresher-content>
+	</ion-refresher>
+	<!--REFRESHER-->
+	<ion-list *ngFor="let messages of resultData; let i=index;" class="messageList">
+		<!--new-->
+		<ion-item lines="none" class="ion-no-padding">
+			<div class="messageList-box" [ngClass]="{'unread' : messages.message_status=='0'}">
+			<div class="messageList-header">
+				<span class="messagesAuth">{{ messages.first_name }} {{ messages.last_name }}</span>
+				<!--<span class="messagesDate">{{ messages.contact_on_date }}</span>-->
+			</div>
+			<div class="messageList-content">{{ messages.question }}</div>
+			<div class="messageListBtns">
+				<!--<ion-icon name="ios-checkmark-circle-outline" 
+				*ngIf="messages.message_status=='1'"></ion-icon>
+				<ion-icon name="ios-close-circle-outline" 
+				*ngIf="messages.message_status=='0'"></ion-icon>-->
+		    	<ion-icon color="danger" slot="icon-only" name="eye" (click)="show_message_thread(messages.question_sku,'User')" 
+		    	*ngIf="messages.message_complete_status=='Incompleted'"></ion-icon>		    	
+		    	<ion-icon color="primary" slot="icon-only" name="eye" (click)="show_message_thread(messages.question_sku,'User')" 
+		    	*ngIf="messages.message_complete_status=='Completed'"></ion-icon>
+		    	<ion-icon color="primary" slot="icon-only" name="trash" 
+		    	(click)="deleteConfirm(messages.message_id)" ></ion-icon>
+			</div>
+			</div>
+		</ion-item>
+		<!--new-->
+		<!--BEFORE-->
+		<!--<ion-list-header>
+			{{ messages.first_name }} {{ messages.last_name }} / {{ messages.contact_on_date }}
+		</ion-list-header>
+		<ion-item-group>
+			<ion-item lines="none">{{ messages.question }}</ion-item>			
+			<ion-item class="ion-text-start">
+				<ion-icon name="ios-checkmark-circle-outline" 
+				*ngIf="messages.message_status=='1'"></ion-icon>
+				<ion-icon name="ios-close-circle-outline" 
+				*ngIf="messages.message_status=='0'"></ion-icon>
+				<ion-button (click)="show_message_thread(messages.question_sku,'User')" size="small">
+			    	<ion-icon name="create"></ion-icon>
+			    </ion-button>
+			    <ion-button (click)="deleteConfirm(messages.message_id)" size="small">
+			    	<ion-icon name="trash"></ion-icon>
+			    </ion-button>
+			</ion-item>			
+		</ion-item-group>-->
+		<!--BEFORE-->		
+	</ion-list>	
+</ion-content>

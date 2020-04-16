@@ -1,0 +1,97 @@
+ion-header{
+    border-bottom: 1px solid #c8c7cc;
+	ion-row{
+		width: 100%;
+	}
+	ion-list{margin-bottom: auto;}
+
+	ion-col.buttonsWrap {
+	    width: 100px !important;
+	    flex: 0 0 auto !important;
+	    max-width: none !important;
+	    display: flex;
+	    justify-content: flex-end;
+	}
+
+    .docdetails  {
+		ion-avatar{
+		    background: #ccc;
+		    border-radius: 50%;
+		    width: 70px;
+		    height: 70px;
+	        align-self: flex-start;
+		    margin-top: 10px;
+		}
+    	ion-label{
+	        padding-left: 12px;
+	        h2{
+	        	font-size: 18px;
+	        	font-weight: bold;
+	        }
+    	}
+    }
+    .resultDataRating{
+    	ion-icon{
+    		width: 22px;
+    		height: 22px;
+    	}
+    }
+}
+
+.show-researcher-info{
+	ion-list-header{
+		 border-bottom: 1px solid #c8c7cc;
+	}
+	ion-item{
+		 border-bottom: 1px solid #c8c7cc;
+		 padding-top: 10px;
+		 padding-bottom: 10px;
+		 ion-avatar{
+		 	flex: 0 0 50px;
+		 	align-self: flex-start;
+		 	img{
+		 		max-width: 100%;
+		 		width: auto;
+		 		height: auto;
+			    width: 50px;
+			    height: 50px;
+			    object-fit: cover;
+			    object-position: center;		 		
+		 	}
+		 }
+		.info-wrap{
+			white-space: normal;
+			flex:1 1 auto;
+			width: auto;
+			padding-left: 10px;
+			min-height: 60px;
+			h3{
+				font-size:16px;
+				font-weight: bold;
+				color:#000;
+				margin: auto;
+			}
+			.time-reviewWrap{
+				display: flex;
+				flex-wrap: wrap;
+				align-items: flex-start;
+				justify-content: space-between;
+			}
+			.time{
+				font-size:12px;
+				font-weight:normal;
+				color:#5a5a5a;
+			 	flex: 1 0 auto;
+			}
+			.reviewWrap{
+			 	flex: 0 1 auto;
+			 }
+			.info{
+				font-size:13px;
+				font-weight:normal;
+				color:#5a5a5a;
+				white-space:normal;
+			}
+		}
+	}
+}

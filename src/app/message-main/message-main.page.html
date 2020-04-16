@@ -1,0 +1,28 @@
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-menu-button></ion-menu-button>
+	  		<!--<ion-back-button></ion-back-button>-->
+		</ion-buttons>
+		<ion-buttons fill="clear" slot="end">
+			<button  class="filter" (click)="open_message_information()">
+			<!--MORE INFO--><ion-icon name="information-circle"></ion-icon>
+			</button>
+	    </ion-buttons>
+		<ion-title>Message</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-tabs>
+	<ion-tab-bar slot="bottom">
+		<ion-tab-button tab="message-main-heirstorian">
+			<ion-icon name="flask"></ion-icon>
+			<ion-label>Researcher</ion-label>
+		</ion-tab-button>
+		<ion-tab-button tab="message-main-user">
+			<ion-icon name="person"></ion-icon>
+			<ion-label>User</ion-label>
+		</ion-tab-button>	
+	</ion-tab-bar>
+	</ion-tabs>
+</ion-content>

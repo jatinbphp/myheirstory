@@ -1,0 +1,216 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Show Researcher</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col size="3">
+				<ion-item *ngIf="resultData.photo!=null">
+					<img src="{{search_profile_photo_url}}{{resultData.photo}}">
+				</ion-item>
+				<ion-item *ngIf="resultData.photo===null">
+					<img src="assets/images/1.png">
+				</ion-item>
+				<!--<img src="{{search_profile_photo_url}}{{resultData.photo}}">-->
+			</ion-col>
+			<ion-col size="9">
+				<ion-grid>
+					<ion-row>
+						<ion-col size="9">{{resultData.first_name}} {{resultData.last_name}}</ion-col>
+						<ion-col size="3" class="ion-text-right">${{resultData.cost}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="8" class="ion-text-left">
+		  					<span *ngFor="let star of [1,2,3,4,5]; let s=index;">
+		  						<ion-icon name="star" 
+		  						*ngIf="star <= resultDataRating"></ion-icon>
+		  						<ion-icon name="star-outline" *ngIf="s >= resultDataRating"></ion-icon>
+		  					</span>
+						</ion-col>
+						<ion-col size="2" class="ion-text-right">
+							<div *ngIf="isAnyLoggedin==0">
+								<ion-button size="small" color="warning" 
+								routerLink="/login" routerDirection="root"><ion-icon name="star"></ion-icon>
+								</ion-button>
+							</div>
+							<div *ngIf="isAnyLoggedin==1">
+								<ion-button size="small" color="warning" 
+								(click)="rate_this_heirstorian(resultData.user_id)">
+								<ion-icon name="star"></ion-icon></ion-button>
+							</div>
+						</ion-col>
+						<ion-col size="2" class="ion-text-right">
+							<div *ngIf="isAnyLoggedin==0">
+								<ion-button size="small" color="warning" 
+								routerLink="/login" routerDirection="root"><ion-icon name="flag"></ion-icon>
+								</ion-button>								
+							</div>
+							<div *ngIf="isAnyLoggedin==1">
+								<ion-button size="small" color="warning" (click)="flag_this_heirstorian(resultData.first_name,resultData.last_name,resultData.email)">
+								<ion-icon name="flag"></ion-icon></ion-button>
+							</div>
+						</ion-col>
+					</ion-row>					
+				</ion-grid>			
+			</ion-col>			
+		</ion-row>
+		<ion-row>
+			<ion-col size="6">
+				<div *ngIf="isAnyLoggedin==0">
+					<ion-button color="primary" expand="block" 
+					routerLink="/login" routerDirection="root">BOOK</ion-button>
+				</div>
+				<div *ngIf="isAnyLoggedin==1">
+					<ion-button color="primary" expand="block" 
+					(click)="book_heirstorian(resultData.user_id)">BOOK</ion-button>
+				</div>
+			</ion-col>
+			<ion-col size="6">
+				<div *ngIf="isAnyLoggedin==0">
+					<ion-button color="primary" expand="block" 
+					routerLink="/login" routerDirection="root">MESSAGE</ion-button>
+				</div>
+				<div *ngIf="isAnyLoggedin==1">
+					<ion-button color="primary" expand="block">MESSAGE</ion-button>
+				</div>
+			</ion-col>
+		</ion-row>		
+		<ion-row>
+			<ion-col size="12"><h2>Info</h2></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col size="12"><div [innerHTML]="resultData.experience"></div></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Years of Experience</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>{{resultData.yr_of_experience}} Years</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Time Period</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item *ngFor="let time_period of resultTimePeriod">{{time_period}}</ion-item>	
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Immigration Records</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>{{resultData.imm_records}}</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Qualifications - Certifications</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item *ngFor="let qual_cert of resultQualification">{{qual_cert}}</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>DNA Specialist?</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>{{resultData.dna_specialist}}</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Adoption Help?</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>{{resultData.adoption_help}}</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Religious Records</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item *ngFor="let religious_rec of resultReligiousRecords">{{religious_rec}}</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>International</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item *ngFor="let international of resultInternational">{{international}}</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Language</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item *ngFor="let language of resultLanguage">{{language}}</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col size="12"><h2>Speciality</h2></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col size="12">
+				<ion-item *ngFor="let speciality of resultSpeciality">{{speciality}}</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>{{resultData.other_specialities}}</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col size="12"><h2>Reviews</h2></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col size="12">
+				<ion-slides>
+					<ion-slide *ngFor="let reviews of resultData.rating_data">        
+						<ion-card>
+							<div *ngIf="reviews.photo!=null">
+								<img src="{{search_profile_photo_url}}{{reviews.photo}}">
+							</div>
+							<div *ngIf="reviews.photo===null">
+								<img src="assets/images/1.png">
+							</div>
+							<ion-card-header>
+								<ion-card-subtitle>
+								<ion-icon name="calendar"></ion-icon>
+								{{reviews.created_at | date: 'MMM'}} 
+								{{reviews.created_at | date: 'dd'}},{{reviews.created_at | date: 'yyyy'}}
+								<ion-icon name="time"></ion-icon>
+								{{reviews.created_at | date: 'hh:mm:ss a'}}
+								</ion-card-subtitle>
+								<ion-card-title>{{reviews.full_name}}</ion-card-title>
+							</ion-card-header>
+							<ion-card-content>
+								<ion-grid>
+									<ion-row>
+										<ion-col size="12">
+										<div [innerHTML]="reviews.review"></div>
+										</ion-col>
+									</ion-row>
+									<ion-row>
+										<ion-col size="12">
+											<span *ngFor="let star of [1,2,3,4,5]; let s=index;">
+						  						<ion-icon name="star" 
+						  						*ngIf="star <= reviews.rating"></ion-icon>
+						  						<ion-icon 
+						  						name="star-outline" *ngIf="s >= reviews.rating"></ion-icon>
+						  					</span>
+										</ion-col>
+									</ion-row>
+								</ion-grid>
+							</ion-card-content>
+						</ion-card>
+					</ion-slide>
+				</ion-slides>
+			</ion-col>
+		</ion-row>				
+	</ion-grid>	
+</ion-content>

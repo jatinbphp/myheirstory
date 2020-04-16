@@ -1,0 +1,32 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">      	
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Answer To Message</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">
+	<form [formGroup]="answerToQuestionForm" (ngSubmit)="answer_to_question(answerToQuestionForm.value)">
+  		<ion-input type="hidden" formControlName="message_id"></ion-input>
+  		<ion-input type="hidden" formControlName="heirstorian_id"></ion-input>
+  		<div class="ion-list">
+			<ion-item lines="none">
+				<ion-label position="floating" floating>Answer/Reply</ion-label>
+				<ion-textarea type="text" formControlName="answer"></ion-textarea>
+			</ion-item>
+      <!--VALIDATION-->
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.answer">
+          <div class="error-message" *ngIf="answerToQuestionForm.get('answer').hasError(validation.type) && (answerToQuestionForm.get('answer').dirty || answerToQuestionForm.get('answer').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <!--VALIDATION-->			             
+    	<ion-button class="login-btn" type="submit" expand="block" 
+    	[disabled]="!answerToQuestionForm.valid">Answer</ion-button>      	
+		</div>
+    </form>
+</ion-content>

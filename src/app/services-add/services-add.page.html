@@ -1,0 +1,50 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{action}} Services</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">
+		<ion-card-content>
+		<form [formGroup]="ServicesForm" (ngSubmit)="add_update_my_service(ServicesForm.value)">
+			<ion-input type="hidden" formControlName="id"></ion-input>
+			<div class="ion-list">
+			<ion-item lines="none">
+				<ion-label position="floating" floating>Service Type</ion-label>
+				<ion-select formControlName="service_type">
+				<ion-select-option *ngFor="let services of resultDataCategories" 
+				value="{{services.id}}">{{services.name}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<!--VALIDATION-->
+			<div class="validation-errors">
+				<ng-container *ngFor="let validation of validation_messages.service_type">
+					<div class="error-message" *ngIf="ServicesForm.get('service_type').hasError(validation.type) && (ServicesForm.get('service_type').dirty || ServicesForm.get('service_type').touched)">
+					<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+					</div>
+				</ng-container>
+			</div>
+			<!--VALIDATION-->
+			<ion-item lines="none">
+				<ion-label position="floating" floating>Description</ion-label>
+				<ion-textarea type="text" formControlName="description"></ion-textarea>
+			</ion-item>
+			<!--VALIDATION-->
+			<div class="validation-errors">
+				<ng-container *ngFor="let validation of validation_messages.description">
+					<div class="error-message" *ngIf="ServicesForm.get('description').hasError(validation.type) && (ServicesForm.get('description').dirty || ServicesForm.get('description').touched)">
+					<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+					</div>
+				</ng-container>
+			</div>
+			<!--VALIDATION-->
+			<ion-button type="submit" class="login-btn" [disabled]="!ServicesForm.valid">Upload</ion-button>
+			<ion-button routerLink="/services-main" class="login-btn" routerDirection="root">Cancel</ion-button>
+			</div>
+		</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

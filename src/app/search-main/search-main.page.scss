@@ -1,0 +1,120 @@
+/**
+ * Medix (https://www.enappd.com/medix)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source tree.
+ */
+
+ion-header.main_headere{
+    --background: #232277;
+    background: #232277;
+    ion-toolbar{
+      background: #232277;
+      --background: #232277;
+        ion-title {
+          color: white;
+        }
+        ion-buttons{
+          .filter{
+            /*background: #fff;*/
+            background: none;
+            color:#fff;
+            font-size:20px;
+            padding: 6px 10px;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            ion-icon{
+                padding-left: 7px;
+            }
+          }
+        }
+        ion-menu-button{
+          color: white;
+        }
+    }
+}
+
+
+    ion-content {
+        background:whitesmoke;
+        --background: whitesmoke;
+        ion-card{
+            margin: 12px;
+            border-radius: 10px;
+            width: calc(100% - 24px);
+            font-size: 1.4rem;
+            background: #fff;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            &.selected{
+               /*border-top: 3px solid #32cd32;*/
+               border: 3px solid #3880ff;
+               border-radius: 15px;
+            }
+            .item{
+                .docimg {
+                    width: 32px;
+                    height: 32px;
+                    border: 1px solid gray;
+                    display: inline-block;
+                    margin-right: 4px;
+                    padding: 2px;
+                }
+                h2 {
+                    font-weight: bold;
+                    font-size:17px;
+                    color: #232277;
+                }
+                p {
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: normal;
+                    text-overflow: inherit;
+                    color: #8e9093;
+                    margin: 0 0 2px;
+                }
+
+                .votes {
+                    font-size: 14px;
+                    white-space: normal;
+                    text-align: right;
+                    margin-left: auto;
+                    margin-right: 0;
+                }
+
+                .votes .icon {
+                    color: lightseagreen
+                }
+
+                .available {
+                    color: green;
+                    font-size: 10px;
+                }
+                .dot {
+                    display: inline-block;
+                    height: 4px;
+                    width: 4px;
+                    background: black;
+                    border-radius: 2px;
+                    margin-bottom: 2px;
+                }
+
+                .bookbtn {
+                    border-radius: 4px;
+                    color: #fff;
+                    background-color: #488aff;
+                    margin: 0.4rem 0.2rem;
+                    padding: 0 0.5em;
+                    height: 24px;
+                    font-size: 13px;
+                    width: 100%;
+                    line-height: normal;
+                }
+            }
+        }
+    }
+
+    

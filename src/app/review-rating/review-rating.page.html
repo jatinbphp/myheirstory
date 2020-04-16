@@ -1,0 +1,83 @@
+<!--<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Review & Rating</ion-title>
+	</ion-toolbar>
+</ion-header>-->
+
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Review & Rating</ion-title>
+	</ion-toolbar>
+	<ion-list>
+		<ion-item class="docdetails" lines="none">
+			<ion-avatar item-start  *ngIf="resultData.photo!=null">
+				<img src="{{search_profile_photo_url}}{{resultData.photo}}">
+			</ion-avatar>
+			<ion-avatar item-start  *ngIf="resultData.photo===null">
+				<img src="assets/images/1.png">
+			</ion-avatar>
+			<ion-label>
+				<ion-row class="ion-align-items-end ion-justify-content-between">
+					<ion-col>	
+						<h2>{{resultData.first_name}} {{resultData.last_name}}</h2>
+					</ion-col>					
+				</ion-row>					
+			</ion-label>
+		</ion-item>		
+	</ion-list>
+</ion-header>
+
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">		
+		<ion-card-content>	  			
+		<form [formGroup]="ReviewRatingForm" (ngSubmit)="rate_this_heirstorian(ReviewRatingForm.value)">
+		  <ion-input type="hidden" formControlName="user_id"></ion-input>
+		  <ion-input type="hidden" formControlName="heirstorian_id"></ion-input>
+		  <div class="ion-list">
+			  	<ion-item lines="none">
+			    <ionic4-star-rating #rating 
+			    	activeIcon = "ios-star"
+			    	defaultIcon = "ios-star-outline"
+			    	activeColor = "#FFC107"
+			    	defaultColor = "#aaaaaa"
+			    	readonly = "false"
+			    	fontSize = "32px"
+			    	(ratingChanged)="logRatingSelected($event)"
+			    	formControlName="rating">
+				</ionic4-star-rating>
+			  	</ion-item>
+			  	<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.rating">
+						<div class="error-message" *ngIf="ReviewRatingForm.get('rating').hasError(validation.type) && (ReviewRatingForm.get('rating').dirty || ReviewRatingForm.get('rating').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+				<ion-item lines="none">
+					<ion-label position="floating" floating>Review</ion-label>
+					<ion-textarea type="text" formControlName="review"></ion-textarea>
+				</ion-item>
+				<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.review">
+						<div class="error-message" *ngIf="ReviewRatingForm.get('review').hasError(validation.type) && (ReviewRatingForm.get('review').dirty || ReviewRatingForm.get('review').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+			  	<ion-button type="submit" class="login-btn" expand="block" 
+			  	[disabled]="!ReviewRatingForm.valid">Submit</ion-button>	      
+		  </div>
+		</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

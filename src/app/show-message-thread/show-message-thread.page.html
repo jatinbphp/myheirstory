@@ -1,0 +1,76 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">      	
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Message Thread</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant" scrollDownOnLoad=true>
+	<div class="message-wrap">
+      <div *ngFor="let msg of resultData" class="message">
+        <div class="message-left">
+            <img class="user-img" alt="" src="./assets/imgs/boy.png">
+            <!--<ion-spinner name="dots" *ngIf="msg.message_status === 0"></ion-spinner>-->
+            <div class="msg-detail">
+              <div class="msg-info">
+                <p>ME&nbsp;&nbsp;&nbsp;{{msg.created_at}}</p>
+              </div>
+              <div class="msg-content">
+                <span class="triangle"></span>
+                <p class="line-breaker ">{{msg.question}}</p>
+              </div>
+            </div>          
+        </div>
+        <div class="message-right">
+          <img class="user-img" alt="" src="./assets/imgs/android.png">
+          <div class="msg-detail">            
+            <div class="msg-info" *ngIf="msg.message_status == 0">
+              <p *ngIf="tab_selected=='User'">Awaiting Reply</p>
+              <ion-chip color="primary" *ngIf="tab_selected=='Researcher'" 
+              (click)="answerQuestion(msg.id,msg.heistorian_id,msg.question_sku)">
+                <ion-label>Answer</ion-label>
+                <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+              </ion-chip>
+              <!--<ion-button clear icon-only item-right *ngIf="tab_selected=='Researcher'" 
+              (click)="answerQuestion(msg.id,msg.heistorian_id,msg.question_sku)">
+                <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+              </ion-button>-->
+            </div>
+            <div class="msg-info" *ngIf="msg.answer != null">
+              <p>{{msg.heistorian_id}}&nbsp;&nbsp;&nbsp;{{msg.updated_at}}</p>
+            </div>
+            <div class="msg-content" *ngIf="msg.answer != null">
+              <span class="triangle"></span>
+              <p class="line-breaker ">{{msg.answer}}</p>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+</ion-content>
+
+<ion-footer *ngIf="tab_selected=='User'">
+    <form [formGroup]="askQuestionForm" (ngSubmit)="askQuestion(askQuestionForm.value)">
+      <ion-input type="hidden" formControlName="messate_to_heirstorian"></ion-input>
+      <ion-input type="hidden" formControlName="parent_id"></ion-input>
+      <ion-input type="hidden" formControlName="question_sku"></ion-input>
+      <ion-input type="hidden" formControlName="contact_on_date"></ion-input>
+      <div class="input-wrap">
+        <ion-input type="text" formControlName="question" placeholder="Write here"></ion-input>
+        <ion-button clear icon-only item-right type="submit" [disabled]="!askQuestionForm.valid">
+          <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+        </ion-button>      
+      </div>
+    </form>
+</ion-footer>
+
+<!--<ion-footer>
+    <div class="input-wrap">
+      <input type="text" [(ngModel)]="inp_text" placeholder="Write here">
+      <button ion-button clear icon-only item-right (click)="askQuestion()">
+        <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+      </button>
+    </div>
+</ion-footer>-->

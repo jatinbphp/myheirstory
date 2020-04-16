@@ -1,0 +1,55 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+        <!--<ion-back-button></ion-back-button>-->
+    </ion-buttons>
+    <ion-buttons fill="clear" slot="end">
+      <button class="filter" (click)="open_search_filters()">
+      <!--FILTERS-->
+      <ion-icon name="options"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let heirstorian of resultData; let i=index" (click)="show_heirstorian(heirstorian.user_id)" 
+  [attr.id]="'heirstorian_' + heirstorian.user_id" 
+  [ngClass]="{'selected' : 'heirstorian_' + heirstorian.user_id==heirstorian_asked_for_action}">
+    <ion-item lines="none">
+      <h2 item-start>{{heirstorian.first_name}} {{heirstorian.last_name}}</h2>
+      <div item-end class="votes">
+        <div>
+          <span *ngFor="let star of [1,2,3,4,5]; let s=index;">
+            <ion-icon name="star" color="warning" 
+            *ngIf="star <= resultDataRating[i][heirstorian.user_id][0]"></ion-icon>
+            <ion-icon name="star-outline" color="medium" 
+            *ngIf="s >= resultDataRating[i][heirstorian.user_id][0]"></ion-icon>
+          </span>
+        </div>
+        <div>
+          <ion-note><!--ANY--></ion-note>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item lines="none">
+      <p>{{resultSpeciality[i][heirstorian.user_id]}}</p>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="docimg"><img src="/assets/imgs/hospital (1).png"></div>
+      <div class="docimg"><img src="assets/imgs/medical-tools.png"></div>
+      <div class="docimg"><img src="assets/imgs/microscope.png"></div>
+      <div class="docimg"><img src="assets/imgs/saline.png"></div>
+      <div class="docimg"><img src="assets/imgs/hospital.png"></div>
+    </ion-item>
+    <ion-item lines="none">
+      <div>{{heirstorian.yr_of_experience}} yrs exp <div class="dot"></div> ${{heirstorian.cost}}/hr 
+      <div class="dot"></div> {{resultDataRating[i][heirstorian.user_id][1]}} reviews</div>
+    </ion-item>
+    <!--<ion-item lines="none">
+      <button block class="bookbtn" (click)="book_heirstorian(heirstorian.user_id)">Book</button>
+    </ion-item>-->
+  </ion-card>
+</ion-content>

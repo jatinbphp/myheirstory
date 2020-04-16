@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Researcher</ion-title>
+		<!--<ion-buttons slot="end">
+	      <button ion-button icon-only (click)="switchStyle()">
+	        <ion-icon name="bulb"></ion-icon>
+	      </button>
+	    </ion-buttons>-->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!--REFRESHER-->
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content
+		  pullingIcon="arrow-dropdown"
+		  pullingText="Pull to refresh"
+		  refreshingSpinner="circles">
+		</ion-refresher-content>
+	</ion-refresher>
+	<!--REFRESHER-->
+	<ion-list *ngFor="let messages of resultData; let i=index;" class="messageList">
+		<ion-item lines="none" class="ion-no-padding">
+			<div class="messageList-box" 
+			[ngClass]="{'unread' : messages.message_complete_status=='Incompleted'}">
+				<div class="messageList-header">
+					<span class="messagesAuth">{{ messages.first_name }} {{ messages.last_name }}</span>
+					<!--<span class="messagesDate">{{ messages.contact_on_date }}</span>-->
+				</div>
+				<div class="messageList-content">{{ messages.question }}</div>
+				<div class="messageListBtns">
+					<!--<ion-icon name="ios-checkmark-circle-outline" 
+					*ngIf="messages.message_complete_status=='Completed'"></ion-icon>				
+					<ion-icon name="ios-close-circle-outline" 
+					*ngIf="messages.message_complete_status=='Incompleted'"></ion-icon>-->			    	
+			    	<ion-icon color="primary" slot="icon-only" name="create" (click)="show_message_thread(messages.question_sku,'Researcher')" 
+			    	*ngIf="messages.message_complete_status=='Completed'"></ion-icon>
+			    	<ion-icon color="danger" slot="icon-only" name="create" (click)="show_message_thread(messages.question_sku,'Researcher')" 
+			    	*ngIf="messages.message_complete_status=='Incompleted'"></ion-icon>		    	
+			    	<ion-icon color="primary" slot="icon-only" name="trash" (click)="deleteConfirm(messages.message_id)" ></ion-icon>
+				</div>
+			</div>
+		</ion-item>			
+	</ion-list>		
+</ion-content>

@@ -1,0 +1,219 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+	  		<!--<ion-back-button></ion-back-button>-->
+		</ion-buttons>
+		<ion-title>Search</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card class="welcome-card">
+		<ion-card-header>
+			<ion-card-subtitle>Search Researcher</ion-card-subtitle>
+			<ion-card-title>Search</ion-card-title>
+		</ion-card-header>
+	  <ion-card-content class="bg-transparant">	  			
+	    <form [formGroup]="SearchMainForm" (ngSubmit)="search_heirstorian(SearchMainForm.value)">
+		<ion-grid>		
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Search with Text</ion-label>
+						<ion-input type="text" placeholder="Text" formControlName="search_text"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Rate Type</ion-label>
+						<ion-select formControlName="rate_type">
+							<ion-select-option *ngFor="let rate_types of config_rate_type_options | keyvalue" 
+							value="{{rate_types.key}}">{{rate_types.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Rate</ion-label>
+						<ion-select formControlName="rate">
+							<ion-select-option *ngFor="let hr_options of config_rate_hourly_options | keyvalue" 
+							value="{{hr_options.key}}">{{hr_options.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">States</ion-label>
+						<ion-select multiple="true" formControlName="states">
+							<ion-select-option *ngFor="let states of config_states | keyvalue" 
+							value="{{states.key}}">{{states.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Specialties</ion-label>
+						<ion-select multiple="true" formControlName="specialties">
+							<ion-select-option *ngFor="let specialties of config_specialities_options | keyvalue" 
+							value="{{specialties.key}}">{{specialties.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Certifications/Associations</ion-label>
+						<ion-select multiple="true" formControlName="qual_cert">
+							<ion-select-option *ngFor="let qual_cert of config_qua_certif_options | keyvalue" 
+							value="{{qual_cert.key}}">{{qual_cert.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Time Period</ion-label>
+						<ion-select multiple="true" formControlName="time_period">
+							<ion-select-option *ngFor="let time_period of config_time_period | keyvalue" 
+							value="{{time_period.key}}">{{time_period.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Immigration Records</ion-label>
+						<ion-select formControlName="imm_records">
+							<ion-select-option *ngFor="let imm_records of config_immigration_options | keyvalue" 
+							value="{{imm_records.key}}">{{imm_records.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Years of Experience</ion-label>
+						<ion-select formControlName="yr_of_experience">
+							<ion-select-option *ngFor="let yr_exp of [1,2,3,4,5,6,7,8,9,10]" 
+							value="{{yr_exp}}">{{yr_exp}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Language</ion-label>
+						<ion-select multiple="true" formControlName="language">
+							<ion-select-option *ngFor="let language of config_language_options | keyvalue" 
+							value="{{language.key}}">{{language.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">DNA Specialist</ion-label>
+						<ion-select formControlName="dna_specialist">
+							<ion-select-option *ngFor="let dna_specialist of config_dna_specialist | keyvalue" 
+							value="{{dna_specialist.key}}">{{dna_specialist.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Star Rating</ion-label>
+						<ion-select formControlName="st_rating">
+							<ion-select-option *ngFor="let yr_exp of [1,2,3,4,5]" 
+							value="{{yr_exp}}">{{yr_exp}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-label position="floating">Adoption Help</ion-label>
+						<ion-select formControlName="adoption_help">
+							<ion-select-option 
+							*ngFor="let adoption_help of config_adoption_help_options | keyvalue" 
+							value="{{adoption_help.key}}">{{adoption_help.value}}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-button type="submit" color="primary" expand="block" [disabled]="!SearchMainForm.valid">
+		Search</ion-button>
+		<ion-button type="submit" color="danger" expand="block" (click)="reset_search()">Reset</ion-button>	      
+	    </form>	    
+	  </ion-card-content>
+	</ion-card>
+	<!--SEARCH RESULT-->
+	<ion-card class="welcome-card" *ngIf="resultData.length === 0">
+		<ion-card-header>
+			<ion-card-subtitle>No Result Was Found.</ion-card-subtitle>
+			<ion-card-title>Search Result</ion-card-title>
+		</ion-card-header>
+	</ion-card>
+	<ion-card class="welcome-card" *ngFor="let heirstorian of resultData; let i=index" 
+	(click)="show_heirstorian(heirstorian.user_id)">
+		<ion-item *ngIf="heirstorian.photo!=null">
+			<img src="{{search_profile_photo_url}}{{heirstorian.photo}}">
+		</ion-item>
+		<ion-item *ngIf="heirstorian.photo===null">
+			<img src="assets/images/1.png">
+		</ion-item>
+		<ion-card-header>
+			<ion-card-subtitle>${{heirstorian.cost}}/hr</ion-card-subtitle>
+			<ion-card-title>{{heirstorian.first_name}} {{heirstorian.last_name}}</ion-card-title>
+		</ion-card-header>
+	  	<ion-card-content class="bg-transparant">
+	  		<ion-grid>	  				  			
+	  			<ion-row>
+	  				<ion-col size="12">
+	  					<span *ngFor="let star of [1,2,3,4,5]; let s=index;">
+	  						<ion-icon name="star" 
+	  						*ngIf="star <= resultDataRating[i][heirstorian.user_id]"></ion-icon>
+	  						<ion-icon name="star-outline" 
+	  						*ngIf="s >= resultDataRating[i][heirstorian.user_id]"></ion-icon>
+	  					</span>
+	  					<!--<ion-list>
+	  					<ion-item *ngFor="let star of [1,2,3,4,5]; let s=index;">
+	  						<ion-icon name="star" 
+	  						*ngIf="star <= resultDataRating[i][heirstorian.user_id]"></ion-icon>
+	  						<ion-icon name="star-outline" 
+	  						*ngIf="s >= resultDataRating[i][heirstorian.user_id]"></ion-icon>
+	  					</ion-item>
+	  					</ion-list>-->
+	  				</ion-col>
+	  			</ion-row>
+	  			<ion-row>
+	  				<ion-col size="12">Verified</ion-col>
+	  				<ion-col size="12"></ion-col>
+	  			</ion-row>
+	  			<ion-row>
+	  				<ion-col size="12">Speciality</ion-col>
+	  				<ion-col size="12">{{resultSpeciality[i][heirstorian.user_id]}}</ion-col>
+	  			</ion-row>
+	  		</ion-grid>
+	  	</ion-card-content>
+	</ion-card>
+	<!--SEARCH RESULT-->
+</ion-content>

@@ -1,0 +1,363 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+        <!--<ion-back-button></ion-back-button>-->
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="bg-transparant">
+<ion-progress-bar color="danger" value="{{profile_completed_persontage}}" 
+*ngIf="profile_completed_persontage < 100"></ion-progress-bar> 
+<ion-card class="welcome-card" *ngIf="user_type=='user'" >
+  <ion-card-header class="ion-no-padding">
+    <ion-card-subtitle>
+      <ion-button type="submit" color="success" fill="outline" size="small" expand="block" routerLink="/payment-information" routerDirection="root" >BECOME A RESEARCHER</ion-button>
+      <ion-button type="submit" color="primary" fill="outline" size="small" expand="block" routerLink="/researcher-benefits" routerDirection="root" >REARCHER BENEFITS</ion-button>
+    </ion-card-subtitle>
+    <ion-card-title>Become A Researcher</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>    
+    <!-- Default Progressbar with 50 percent -->          		  	
+    <form [formGroup]="profileFormUser" (ngSubmit)="update_my_profile(profileFormUser.value)">
+      <ion-input type="hidden" formControlName="user_type"></ion-input>      
+      <ion-input type="hidden" formControlName="geneaology_research"></ion-input>
+      <ion-input type="hidden" formControlName="old_photo"></ion-input>
+      <div class="ion-list">          
+        <ion-item lines="none">
+          <ion-label position="floating" floating>First Name</ion-label>
+          <ion-input type="text" formControlName="first_name"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages_usr.first_name">
+          <div class="error-message" *ngIf="profileFormUser.get('first_name').hasError(validation.type) && (profileFormUser.get('first_name').dirty || profileFormUser.get('first_name').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Last Name</ion-label>
+          <ion-input type="text" formControlName="last_name"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages_usr.last_name">
+          <div class="error-message" *ngIf="profileFormUser.get('last_name').hasError(validation.type) && (profileFormUser.get('last_name').dirty || profileFormUser.get('last_name').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Mobile Number</ion-label>
+          <ion-input type="text" formControlName="mobile"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Email</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages_usr.email">
+          <div class="error-message" *ngIf="profileFormUser.get('email').hasError(validation.type) && (profileFormUser.get('email').dirty || profileFormUser.get('email').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Zipcode</ion-label>
+          <ion-input type="text" formControlName="zipcode"></ion-input>
+        </ion-item>      
+        <ion-item *ngIf="profile_photo!=null" lines="none">
+          <ion-label position="floating" floating>Profile Picture</ion-label>
+          <div class="profile_photo_Wrap">
+             <img src="{{profile_photo_url}}{{profile_photo}}" width="150" height="150">
+            <div (click)="getPhoto()" class="editPhotobtn"><ion-icon name="camera"></ion-icon></div>
+          </div>
+        </ion-item>            
+        <ion-button type="submit" expand="block"  
+        [disabled]="!profileFormUser.valid" class="login-btn">Update</ion-button>      
+      </div>
+    </form>
+  </ion-card-content>
+</ion-card>
+<ion-card class="welcome-card" *ngIf="user_type=='heirstorian'">
+  <ion-card-content>  		  	
+    <form [formGroup]="profileFormHeirstorian" (ngSubmit)="update_my_profile(profileFormHeirstorian.value)">
+      <ion-input type="hidden" formControlName="user_type"></ion-input>      
+      <ion-input type="hidden" formControlName="geneaology_research"></ion-input>
+      <ion-input type="hidden" formControlName="old_photo"></ion-input>
+      <div class="ion-list">          
+        <ion-item lines="none">
+          <ion-label position="floating" floating>First Name</ion-label>
+          <ion-input type="text" formControlName="first_name"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.first_name">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('first_name').hasError(validation.type) && (profileFormHeirstorian.get('first_name').dirty || profileFormHeirstorian.get('first_name').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Last Name</ion-label>
+          <ion-input type="text" formControlName="last_name"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.last_name">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('last_name').hasError(validation.type) && (profileFormHeirstorian.get('last_name').dirty || profileFormHeirstorian.get('last_name').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Mobile Number</ion-label>
+          <ion-input type="text" formControlName="mobile"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Email</ion-label>  
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.email">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('email').hasError(validation.type) && (profileFormHeirstorian.get('email').dirty || profileFormHeirstorian.get('email').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Zipcode</ion-label>
+          <ion-input type="text" formControlName="zipcode"></ion-input>
+        </ion-item>      
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Biography
+          <br>Please tell us about yourself</ion-label>
+          <ion-textarea type="text" formControlName="experience"></ion-textarea>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.experience">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('experience').hasError(validation.type) && (profileFormHeirstorian.get('experience').dirty || profileFormHeirstorian.get('experience').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Years of Experience<br>
+          How long have you been involved with family research?</ion-label>
+          <ion-input type="text" formControlName="yr_of_experience"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.yr_of_experience">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('yr_of_experience').hasError(validation.type) && (profileFormHeirstorian.get('yr_of_experience').dirty || profileFormHeirstorian.get('yr_of_experience').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Hourly Rate</ion-label>
+          <ion-input type="text" formControlName="cost"></ion-input>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.cost">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('cost').hasError(validation.type) && (profileFormHeirstorian.get('cost').dirty || profileFormHeirstorian.get('cost').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Hourly Rate Options</ion-label>
+          <ion-select formControlName="hr_option" multiple="true">
+            <ion-select-option *ngFor="let hr_options of config_hourly_options | keyvalue" 
+            value="{{hr_options.key}}">{{hr_options.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.hr_option">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('hr_option').hasError(validation.type) && (profileFormHeirstorian.get('hr_option').dirty || profileFormHeirstorian.get('hr_option').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>DNA<br>
+          Can you help someone understand their DNA?</ion-label>
+          <ion-select formControlName="dna_specialist">
+            <ion-select-option *ngFor="let dna_specialist of config_dna_specialist | keyvalue" 
+            value="{{dna_specialist.key}}">{{dna_specialist.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.dna_specialist">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('dna_specialist').hasError(validation.type) && (profileFormHeirstorian.get('dna_specialist').dirty || profileFormHeirstorian.get('dna_specialist').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Adoption<br>
+          Can you help someone that was adopted?</ion-label>
+          <ion-select formControlName="adoption_help">
+            <ion-select-option *ngFor="let adoption_help of config_adoption_help_options | keyvalue" 
+            value="{{adoption_help.key}}">{{adoption_help.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.adoption_help">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('adoption_help').hasError(validation.type) && (profileFormHeirstorian.get('adoption_help').dirty || profileFormHeirstorian.get('adoption_help').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Immigration<br>
+          Can you help someone with immigration records?</ion-label>
+          <ion-select formControlName="imm_records">
+            <ion-select-option *ngFor="let imm_records of config_immigration_options | keyvalue" 
+            value="{{imm_records.key}}">{{imm_records.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.imm_records">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('imm_records').hasError(validation.type) && (profileFormHeirstorian.get('imm_records').dirty || profileFormHeirstorian.get('imm_records').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Languages<br>
+          Which languages do you speak fluently?</ion-label>
+          <ion-select formControlName="language" multiple="true">
+            <ion-select-option *ngFor="let language of config_language_options | keyvalue" 
+            value="{{language.key}}">{{language.value}}</ion-select-option>
+          </ion-select>
+          <ion-label position="floating" floating>Other Language<br>
+          Please fill it no option available.</ion-label>
+          <ion-input type="text" formControlName="other_language"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Qualifications - Certifications<br>
+          Do you hold any professional certifications or qualifications?</ion-label>
+          <ion-select formControlName="qual_cert" multiple="true">
+            <ion-select-option *ngFor="let qual_cert of config_qua_certif_options | keyvalue" 
+            value="{{qual_cert.key}}">{{qual_cert.value}}</ion-select-option>
+          </ion-select>
+          <ion-label position="floating" floating>Other Certification<br>
+          Please fill it no option available.</ion-label>
+          <ion-input type="text" formControlName="other_qual_cert"></ion-input>
+        </ion-item>   
+        <ion-item lines="none">
+          <ion-label color="primary">OTHER SPECIALTIES</ion-label>        
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Ethnicity & Race Records</ion-label>
+          <ion-select formControlName="specialties" multiple="true">
+            <ion-select-option *ngFor="let specialties of config_specialities_options | keyvalue" 
+            value="{{specialties.key}}">{{specialties.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--VALIDATION-->
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages_heirstorian.specialties">
+            <div class="error-message" *ngIf="profileFormHeirstorian.get('specialties').hasError(validation.type) && (profileFormHeirstorian.get('specialties').dirty || profileFormHeirstorian.get('specialties').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!--VALIDATION-->
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Time Period</ion-label>
+          <ion-select formControlName="time_period" multiple="true">
+            <ion-select-option *ngFor="let time_period of config_time_period | keyvalue" 
+            value="{{time_period.key}}">{{time_period.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Religious Records</ion-label>
+          <ion-select formControlName="religious_records" multiple="true">
+            <ion-select-option *ngFor="let religious_records of config_religious_records | keyvalue" 
+            value="{{religious_records.key}}">{{religious_records.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>US States</ion-label>
+          <ion-select formControlName="state" multiple="true">
+            <ion-select-option *ngFor="let state of config_states | keyvalue" 
+            value="{{state.key}}">{{state.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>International</ion-label>
+          <ion-select formControlName="international" multiple="true">
+            <ion-select-option *ngFor="let international of config_international | keyvalue" 
+            value="{{international.key}}">{{international.value}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating" floating>Other
+          <br>Describe any other specialities.</ion-label>
+          <ion-textarea type="text" formControlName="other_specialities"></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="profile_photo!=null" lines="none">
+          <ion-label position="floating" floating>Profile Picture</ion-label>
+          <div class="profile_photo_Wrap">
+             <img src="{{profile_photo_url}}{{profile_photo}}" width="150" height="150">
+            <div (click)="getPhoto()" class="editPhotobtn"><ion-icon name="camera"></ion-icon></div>
+          </div>
+        </ion-item>
+        <!--<ion-item no-line color="light">
+          <ion-label position="floating">Website</ion-label>
+          <ion-input type="text" placeholder="Website" formControlName="website"></ion-input>
+        </ion-item>
+        <ion-item no-line color="light">
+          <ion-label position="floating">Blog</ion-label>
+          <ion-input type="text" placeholder="Blog" formControlName="blog"></ion-input>
+        </ion-item>
+        <ion-item no-line color="light">
+          <ion-label position="floating">Instagram</ion-label>
+          <ion-input type="text" placeholder="Instagram" formControlName="acc_instagram"></ion-input>
+        </ion-item>
+        <ion-item no-line color="light">
+          <ion-label position="floating">Facebook</ion-label>
+          <ion-input type="text" placeholder="Facebook" formControlName="acc_facebook"></ion-input>
+        </ion-item>
+        <ion-item no-line color="light">
+          <ion-label position="floating">Twitter</ion-label>
+          <ion-input type="text" placeholder="Twitter" formControlName="acc_twitter"></ion-input>
+        </ion-item>
+        <ion-item no-line color="light">
+          <ion-label position="floating">Location</ion-label>
+          <ion-input type="text" placeholder="Location" formControlName="location"></ion-input>
+        </ion-item>-->
+        <ion-button type="submit"
+         expand="block"  
+        [disabled]="!profileFormHeirstorian.valid" class="login-btn">Update</ion-button>
+      </div>
+    </form>
+  </ion-card-content>
+</ion-card>
+</ion-content>

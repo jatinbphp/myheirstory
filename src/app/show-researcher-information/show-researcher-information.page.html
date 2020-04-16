@@ -1,0 +1,28 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-buttons fill="clear" slot="end">
+			<ion-button class="filter" (click)="dismissModal()">
+				<ion-icon name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>
+			<img src="./assets/imgs/info.png"> {{resultData.first_name}} {{resultData.last_name}}			
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">
+		<ion-card-header class="ion-no-padding">
+			<!--<ion-card-subtitle>Info</ion-card-subtitle>-->
+			<ion-card-title color="primary">Info</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>			
+			<ion-text color="dark">
+				<p>{{resultData.experience}}</p>
+			</ion-text>								
+		</ion-card-content>
+	</ion-card>
+</ion-content>

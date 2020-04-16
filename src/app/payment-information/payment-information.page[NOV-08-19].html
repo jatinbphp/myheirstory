@@ -1,0 +1,94 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+        <!--<ion-back-button></ion-back-button>-->
+    </ion-buttons>
+    <ion-title>Payment Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">
+		<ion-card-content>	  			
+			<form [formGroup]="paymentInfoForm" (ngSubmit)="save_payment_info(paymentInfoForm.value)">
+			<ion-input type="hidden" formControlName="country" *ngIf="isStripe==true"></ion-input>
+			<ion-input type="hidden" formControlName="currency" *ngIf="isStripe==true"></ion-input>
+			<ion-input type="hidden" formControlName="account_holder_type" *ngIf="isStripe==true"></ion-input>
+			<ion-list insert>          
+				<ion-item>
+					<ion-label position="floating" floating>Payment Method</ion-label>
+					<ion-select formControlName="payment_option" (ionChange)="selected_method($event);">
+					<ion-select-option value="paypal">PayPal</ion-select-option>
+					<ion-select-option value="strip">Strip</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Email (Account)</ion-label>
+					<ion-input type="text"formControlName="account_to_accept_payment"></ion-input>
+				</ion-item>	      	             
+			</ion-list>
+			<ion-list *ngIf="isPayPal==true">
+				<ion-item>
+					<p>MERCHANT account is mendatory, otherwise you will not receive payments.</p>
+				</ion-item>
+			</ion-list>
+			<ion-list *ngIf="isStripe==true">
+				<ion-item>
+					<p>
+						STRIP Account ID<br>{{stripAccount}}
+					</p>
+				</ion-item>
+			</ion-list>
+			<ion-list *ngIf="isStripe==true">				
+				<ion-item>
+					<ion-label position="floating" floating>Account Number</ion-label>
+					<ion-input type="text" formControlName="account_number"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Routing Number</ion-label>
+					<ion-input type="text" formControlName="routing_number"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Bank Name</ion-label>
+					<ion-input type="text" formControlName="bank_name"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Account Holder Name</ion-label>
+					<ion-input type="text" formControlName="account_holder_name"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Date of Birth</ion-label>
+					<ion-datetime bg-color="light" formControlName="date_of_birth" 
+					display-format="D, MMMM YYYY" picker-format="YYYY-MM-DD"></ion-datetime>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>SSN</ion-label>
+					<ion-input type="text" formControlName="account_ssn"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Address 1</ion-label>
+					<ion-input type="text" formControlName="address_line_1"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Address 2</ion-label>
+					<ion-input type="text" formControlName="address_line_2"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>City</ion-label>
+					<ion-input type="text" formControlName="address_in_city"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>State</ion-label>
+					<ion-input type="text" formControlName="address_in_state"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating" floating>Zipcode</ion-label>
+					<ion-input type="text" formControlName="address_zipcode"></ion-input>
+				</ion-item>
+			</ion-list>
+			<ion-button type="submit" fill="outline" color="light" expand="block"  
+			[disabled]="!paymentInfoForm.valid">Update</ion-button>	      
+			</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

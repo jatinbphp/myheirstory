@@ -1,0 +1,140 @@
+/**
+ * Medix (https://www.enappd.com/medix)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source tree.
+ */
+ 
+ion-header.main_headere{
+    --background: #232277;
+    background: #232277;
+    ion-toolbar{
+      border-bottom: 1px solid #c8c7cc;
+      background: #232277;
+      --background: #232277;
+        ion-title {
+          color: white;
+        }
+        ion-buttons{
+          .filter{
+            background: #fff;
+            padding: 6px 10px;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            ion-icon{
+                padding-left: 7px;
+            }
+          }
+        }
+        ion-menu-button{
+          color: white;
+        }
+    }
+}
+
+ion-content
+{
+    .detailList {
+        margin-top: 0px;
+    }
+    .profileImg {
+        min-height: 287px;
+        max-height: 287px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        background-color: #232277;
+        color: white;
+        width: 100%;
+        z-index: 0;
+    }  
+    
+    .item > ion-icon:first-child, .item-inner > ion-icon:first-child {
+        text-align: center;
+        min-width: 24px;
+    }
+    .details h2 {
+        font-weight: bold;
+        margin-top: 8px;
+    }  
+    ion-item h3 {
+    margin: 0 0 3px;
+    font-size: 1.4rem;        
+    font-weight: bold;
+    color: gray;
+    margin-bottom: 8px;
+    }
+    ion-item p {
+    overflow: inherit;
+    font-size: 1.4rem;
+    line-height: normal;
+    text-overflow: inherit;
+    color: #8e9093;
+    margin: 0 0 2px;
+    }
+    .detailList{
+        ion-item {
+            --ion-padding-top: 10px;
+            --ion-padding-bottom: 10px;
+            .icon{
+                margin:0 15px 0 0;
+            }
+            ion-thumbnail{
+                width: 32px;
+                height: auto;
+            }
+            label {
+                padding: 15px 0;
+                h5{
+                    margin: 0;
+                    color:gray;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .profile_photo_Wrap{
+        max-width: 50%;
+        margin: 30px auto 0;
+        position: relative;
+        img{
+            display: block;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #e2e0e0;
+        }
+        .editPhotobtn {
+            position: absolute;
+            bottom:5px;
+            right:5px;
+            ion-icon {
+                width: 18px;
+                height: 18px;
+                background:#fff;
+                border-radius: 50%;
+                padding: 10px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+                color:  #232277;
+            }
+        }
+    }
+}

@@ -1,0 +1,147 @@
+/**
+ * Medix (https://www.enappd.com/medix)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source tree.
+ */
+
+ion-header.main_headere{
+    --background: #232277;
+    background: #232277;
+    ion-toolbar{
+      border-bottom: 1px solid #c8c7cc;
+      background: #232277;
+      --background: #232277;
+        ion-title {
+          color: white;
+        }
+        ion-buttons{
+          .filter{
+            background: #fff;
+            padding: 6px 10px;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            ion-icon{
+                padding-left: 7px;
+            }
+          }
+        }
+        ion-menu-button{
+          color: white;
+        }
+    }
+}
+
+
+ion-content{
+    background: transparent;
+    --background: transparent;
+    
+    ion-card{
+        --background: transparent;
+        background: transparent;
+        box-shadow: none;
+        border: 0 none;
+        ion-card-content{
+        border: 0 none;
+        padding: 0;        
+        --background: transparent;
+        background: transparent;
+        box-shadow: none;
+        color:#fff;
+        }
+    }
+
+    .ion-list{
+    --background: transparent;
+    background: transparent;
+    margin: auto auto;
+        .heading {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 13px 8px 13px 0px;
+            justify-content: center;
+            color:#fff;
+        }
+
+        ion-item {
+            --background: transparent;
+            background: transparent;
+            color:#fff;
+            padding: 0;
+            --padding: 0;
+            --ion-padding: 0;
+            --inner-padding-end: 0px;
+            --padding-start:0px;
+
+            .label {
+                color: white;
+            }
+            ion-textarea,
+            ion-select,
+            ion-input{
+                border-bottom: 1px solid #c8c7cc;
+            }
+
+            .inp-labels {
+                padding-left: 10px;
+            }
+        }
+        .login-btn {
+            color: white;
+            border-color: white;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .signup-btn {
+            color: white;
+        }
+
+        .item-input ion-input {
+            color: white;
+        }
+
+        .item .label[floating] {
+            color: white;
+        }
+
+        /*.passwordIcon{           
+            font-size: 2rem !important;
+            position: relative !important;
+            top: -43px !important;
+            margin: 0 auto !important;
+            left: 147px;
+            z-index: 1000;
+        }*/
+
+        .hasIcon{
+            position: relative;
+            ion-input{
+                opacity: 1;
+                --padding-end: 28px;
+            }
+            .passwordIcon{           
+                font-size: 1.5rem ;                
+                position: absolute;
+                top: auto;
+                right: 0;
+                bottom: 10px;
+                z-index: 1000;
+            }        
+        }
+
+        .error-message
+        {
+          color: red;
+          font-size: 14px;
+          /*margin-left: 10px;*/
+          margin-top: 10px;
+        }
+    }
+}
+

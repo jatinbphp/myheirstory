@@ -1,0 +1,7 @@
+{
+  "name": "myheirstory",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

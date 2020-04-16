@@ -1,0 +1,215 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+        <!--<ion-back-button></ion-back-button>-->
+    </ion-buttons>
+    <ion-title>Payment Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">
+		<ion-card-content>	  			
+			<form [formGroup]="paymentInfoForm" (ngSubmit)="save_payment_info(paymentInfoForm.value)">
+			<ion-input type="hidden" formControlName="country" *ngIf="isStripe==true"></ion-input>
+			<ion-input type="hidden" formControlName="currency" *ngIf="isStripe==true"></ion-input>
+			<ion-input type="hidden" formControlName="account_holder_type" *ngIf="isStripe==true"></ion-input>
+			<div class="ion-list">
+			<ion-grid>
+				<ion-row>
+					<ion-col>
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Payment Method</ion-label>
+							<ion-select formControlName="payment_option" 
+							(ionChange)="selected_method($event);">
+							<ion-select-option value="paypal">PayPal</ion-select-option>
+							<ion-select-option value="strip">Strip</ion-select-option>
+							</ion-select>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.payment_option">
+								<div class="error-message" *ngIf="paymentInfoForm.get('payment_option').hasError(validation.type) && (paymentInfoForm.get('payment_option').dirty || paymentInfoForm.get('payment_option').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Email (Account)</ion-label>
+							<ion-input type="text"formControlName="account_to_accept_payment"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.account_to_accept_payment">
+								<div class="error-message" *ngIf="paymentInfoForm.get('account_to_accept_payment').hasError(validation.type) && (paymentInfoForm.get('account_to_accept_payment').dirty || paymentInfoForm.get('account_to_accept_payment').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->	      	             
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="isPayPal==true">
+					<ion-col>
+						<ion-text color="danger">
+							MERCHANT account is mendatory, otherwise you will not receive payments.
+						</ion-text>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="isStripe==true">
+					<ion-col>
+						<ion-text color="primary">STRIP Account ID<br>{{stripAccount}}</ion-text>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="isStripe==true">
+					<ion-col>
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Account Number</ion-label>
+							<ion-input type="text" formControlName="account_number"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.account_number">
+								<div class="error-message" *ngIf="paymentInfoForm.get('account_number').hasError(validation.type) && (paymentInfoForm.get('account_number').dirty || paymentInfoForm.get('account_number').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Routing Number</ion-label>
+							<ion-input type="text" formControlName="routing_number"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.routing_number">
+								<div class="error-message" *ngIf="paymentInfoForm.get('routing_number').hasError(validation.type) && (paymentInfoForm.get('routing_number').dirty || paymentInfoForm.get('routing_number').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Bank Name</ion-label>
+							<ion-input type="text" formControlName="bank_name"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.bank_name">
+								<div class="error-message" *ngIf="paymentInfoForm.get('bank_name').hasError(validation.type) && (paymentInfoForm.get('bank_name').dirty || paymentInfoForm.get('bank_name').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Account Holder Name</ion-label>
+							<ion-input type="text" formControlName="account_holder_name"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.account_holder_name">
+								<div class="error-message" *ngIf="paymentInfoForm.get('account_holder_name').hasError(validation.type) && (paymentInfoForm.get('account_holder_name').dirty || paymentInfoForm.get('account_holder_name').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Date of Birth</ion-label>
+							<ion-datetime bg-color="light" formControlName="date_of_birth" 
+							display-format="D, MMMM YYYY" picker-format="YYYY-MM-DD"></ion-datetime>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.date_of_birth">
+								<div class="error-message" *ngIf="paymentInfoForm.get('date_of_birth').hasError(validation.type) && (paymentInfoForm.get('date_of_birth').dirty || paymentInfoForm.get('date_of_birth').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>SSN</ion-label>
+							<ion-input type="text" formControlName="account_ssn"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.account_ssn">
+								<div class="error-message" *ngIf="paymentInfoForm.get('account_ssn').hasError(validation.type) && (paymentInfoForm.get('account_ssn').dirty || paymentInfoForm.get('account_ssn').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Address 1</ion-label>
+							<ion-input type="text" formControlName="address_line_1"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.address_line_1">
+								<div class="error-message" *ngIf="paymentInfoForm.get('address_line_1').hasError(validation.type) && (paymentInfoForm.get('address_line_1').dirty || paymentInfoForm.get('address_line_1').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Address 2</ion-label>
+							<ion-input type="text" formControlName="address_line_2"></ion-input>
+						</ion-item>
+						<ion-item lines="none">
+							<ion-label position="floating" floating>City</ion-label>
+							<ion-input type="text" formControlName="address_in_city"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.address_in_city">
+								<div class="error-message" *ngIf="paymentInfoForm.get('address_in_city').hasError(validation.type) && (paymentInfoForm.get('address_in_city').dirty || paymentInfoForm.get('address_in_city').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>State</ion-label>
+							<ion-input type="text" formControlName="address_in_state"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.address_in_state">
+								<div class="error-message" *ngIf="paymentInfoForm.get('address_in_state').hasError(validation.type) && (paymentInfoForm.get('address_in_state').dirty || paymentInfoForm.get('address_in_state').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+						<ion-item lines="none">
+							<ion-label position="floating" floating>Zipcode</ion-label>
+							<ion-input type="text" formControlName="address_zipcode"></ion-input>
+						</ion-item>
+						<!--VALIDATION-->
+						<div class="validation-errors">
+							<ng-container *ngFor="let validation of validation_messages.address_zipcode">
+								<div class="error-message" *ngIf="paymentInfoForm.get('address_zipcode').hasError(validation.type) && (paymentInfoForm.get('address_zipcode').dirty || paymentInfoForm.get('address_zipcode').touched)">
+								<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+								</div>
+							</ng-container>
+						</div>
+						<!--VALIDATION-->
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-button type="submit" expand="block"  
+						[disabled]="!paymentInfoForm.valid" class="login-btn">Update</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			</div>						
+			</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

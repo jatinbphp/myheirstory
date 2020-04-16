@@ -1,0 +1,37 @@
+<!--<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Help Understanding Your DNA Result</ion-title>
+	</ion-toolbar>
+</ion-header>-->
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">
+		<ion-card-header class="ion-no-padding">
+			<ion-card-subtitle>Help Understanding Your DNA Result</ion-card-subtitle>
+			<ion-card-title>Search</ion-card-title>
+		</ion-card-header>
+	  <ion-card-content>	  			
+	    <form [formGroup]="searchDnaResultForm" (ngSubmit)="search_heirstorian(searchDnaResultForm.value)">
+		<div class="ion-list">
+			<ion-item lines="none">
+				<ion-label position="floating" floating>DNA Specialist</ion-label>
+				<ion-select formControlName="dna_specialist">
+					<ion-select-option *ngFor="let dnaspecialist of config_dna_specialist | keyvalue" 
+					value="{{dnaspecialist.key}}">{{dnaspecialist.value}}</ion-select-option>
+				</ion-select>
+			</ion-item>		
+			<ion-item lines="none">
+				<ion-label position="floating" floating>What is your budget?</ion-label>
+				<ion-select formControlName="rate">
+					<ion-select-option *ngFor="let hr_options of config_rate_hourly_options | keyvalue" 
+					value="{{hr_options.key}}">{{hr_options.value}}</ion-select-option>
+				</ion-select>
+			</ion-item>								
+			<ion-button type="submit" class="login-btn" expand="block">Search</ion-button>				      
+		</div>
+	    </form>	    
+	  </ion-card-content>
+	</ion-card>	
+</ion-content>

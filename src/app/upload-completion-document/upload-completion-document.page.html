@@ -1,0 +1,36 @@
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Upload Completion Document</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">	  
+	  <ion-card-content>    
+	    <!-- Default Progressbar with 50 percent -->          		  	
+	    <form [formGroup]="uploadCompletionDocumentForm" 
+	    (ngSubmit)="upload_completion_document(uploadCompletionDocumentForm.value)">
+	      <ion-input type="hidden" formControlName="booking_id"></ion-input>      
+	      <ion-input type="hidden" formControlName="user_id"></ion-input>
+	      <ion-input type="hidden" formControlName="heistorian_id"></ion-input>
+	      <ion-input type="hidden" formControlName="email"></ion-input>
+	      <ion-input type="hidden" formControlName="file_uri"></ion-input>
+	      <ion-input type="hidden" formControlName="selected_file"></ion-input>
+	      <ion-input type="hidden" formControlName="sourse_file_path"></ion-input>
+	      <div class="ion-list">          	              
+	        <ion-item lines="none">
+	          <ion-label position="floating" floating>Document(.PDF)</ion-label>
+	          <div class="profile_photo_Wrap" (click)="openChooser()">	             
+	            <div class="editPhotobtn"><ion-icon name="camera"></ion-icon></div>
+	          </div>
+	        </ion-item>            
+	        <ion-button type="submit" expand="block"  
+	        [disabled]="!uploadCompletionDocumentForm.valid" class="login-btn">Upload</ion-button>      
+	      </div>
+	    </form>
+	  </ion-card-content>
+	</ion-card>
+</ion-content>

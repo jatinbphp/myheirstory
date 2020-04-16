@@ -1,0 +1,69 @@
+<!--<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Message Researcher</ion-title>
+	</ion-toolbar>
+</ion-header>-->
+
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+	  		<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Message Researcher</ion-title>
+	</ion-toolbar>
+	<ion-list>
+		<ion-item class="docdetails" lines="none">
+			<ion-avatar item-start  *ngIf="resultData.photo!=null">
+				<img src="{{search_profile_photo_url}}{{resultData.photo}}">
+			</ion-avatar>
+			<ion-avatar item-start  *ngIf="resultData.photo===null">
+				<img src="assets/images/1.png">
+			</ion-avatar>
+			<ion-label>
+				<ion-row class="ion-align-items-end ion-justify-content-between">
+					<ion-col>	
+						<h2>{{resultData.first_name}} {{resultData.last_name}}</h2>
+					</ion-col>					
+				</ion-row>					
+			</ion-label>
+		</ion-item>		
+	</ion-list>
+</ion-header>
+
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">		
+		<ion-card-content>	  			
+		<form [formGroup]="messageForm" (ngSubmit)="message_heirstorian(messageForm.value)">
+			<ion-input type="hidden" formControlName="messate_to_heirstorian"></ion-input>
+			<ion-input type="hidden" formControlName="parent_id"></ion-input>
+			<ion-input type="hidden" formControlName="question_sku"></ion-input>
+			<ion-input type="hidden" formControlName="contact_on_date"></ion-input>
+		  	<div class="ion-list">
+				<!--<ion-item lines="none">
+					<ion-label position="floating" floating>Date-Time</ion-label>
+					<ion-datetime bg-color="light" formControlName="contact_on_date" 
+					display-format="D, MMMM YYYY hh:mm A" picker-format="YYYY-MM-DD HH:mm:ss"></ion-datetime>
+				</ion-item>-->
+				<ion-item lines="none">
+					<ion-label position="floating" floating>Message/Question</ion-label>
+					<ion-textarea type="text" formControlName="question"></ion-textarea>
+				</ion-item>
+				<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.question">
+						<div class="error-message" *ngIf="messageForm.get('question').hasError(validation.type) && (messageForm.get('question').dirty || messageForm.get('question').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->	             
+			  	<ion-button type="submit" class="login-btn" expand="block" 
+			  	[disabled]="!messageForm.valid">Send</ion-button>	      	
+			</div>
+		</form>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

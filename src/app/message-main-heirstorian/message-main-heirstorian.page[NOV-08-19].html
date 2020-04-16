@@ -1,0 +1,49 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Researcher</ion-title>
+		<ion-buttons slot="end">
+	      <button ion-button icon-only (click)="switchStyle()">
+	        <ion-icon name="bulb"></ion-icon>
+	      </button>
+	    </ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>		
+		<ion-row>
+			<ion-col size="12">
+				<ngx-datatable class="material fullscreen" [ngClass]="tablestyle" [rows]="resultData" 
+				[columnMode]="'force'" [scrollbarV]="true" [scrollbarH]="true" 
+				[sortType]="'multi'" [reorderable]="false">    
+				<ngx-datatable-column prop="question" name="Question" [width]="300"></ngx-datatable-column>
+				<ngx-datatable-column name="Asked By" [width]="200">
+					<ng-template let-row="row" ngx-datatable-cell-template>
+				      {{ row.first_name }} {{ row.last_name }}
+				    </ng-template>
+				</ngx-datatable-column>
+				<ngx-datatable-column prop="contact_on_date" name="Contact on Date" 
+				[width]="150"></ngx-datatable-column>	
+				<ngx-datatable-column name="A/Status" [width]="100">
+					<ng-template let-row="row" ngx-datatable-cell-template>						
+				      <ion-icon name="ios-checkmark-circle-outline" 
+				      *ngIf="row.message_complete_status=='Completed'"></ion-icon>
+				      <ion-icon name="ios-close-circle-outline" 
+				      *ngIf="row.message_complete_status=='Incompleted'"></ion-icon>
+				    </ng-template>
+				</ngx-datatable-column>	
+				<ngx-datatable-column prop="id" name="Action" [width]="80">	  
+				  <ng-template let-row="row" ngx-datatable-cell-template>
+				    <button ion-button small outline color="light" (click)="answer_message(row)">
+				    	<ion-icon name="create"></ion-icon>
+				    </button>
+				    <button ion-button small outline color="light" (click)="remove_message(row)">
+				    	<ion-icon name="trash"></ion-icon>
+				    </button>
+				  </ng-template>
+				</ngx-datatable-column>
+				</ngx-datatable>
+			</ion-col>
+		</ion-row>
+	</ion-grid>	
+</ion-content>

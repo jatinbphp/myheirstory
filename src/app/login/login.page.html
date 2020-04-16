@@ -1,0 +1,84 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+        <!--<ion-back-button></ion-back-button>-->
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">
+	  <ion-card-content>	  	
+		<ion-row>
+			<ion-col class="ion-no-padding">
+			<ion-button class="log-in-button" color="danger" expand="block" 
+			(click)="doGoogleLogin()">LOG IN WITH GOOGLE</ion-button>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="ion-no-padding">
+			<ion-button class="log-in-button" color="primary" expand="block" 
+			(click)="doFBLogin()">LOG IN WITH FACEBOOK</ion-button>
+			</ion-col>
+		</ion-row>
+	    <form [formGroup]="loginForm" (ngSubmit)="make_me_loggedin(loginForm.value)">
+	  		<div class="ion-list">
+			<ion-item lines="none">
+				<ion-label position="floating" floating>Email</ion-label>
+				<ion-input type="email" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+			</ion-item>
+			<!--VALIDATION-->
+			<div class="validation-errors">
+				<ng-container *ngFor="let validation of validation_messages.email">
+					<div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+					<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+					</div>
+				</ng-container>
+			</div>
+			<!--VALIDATION-->
+			<ion-item lines="none" class="hasIcon">
+				<ion-label position="floating" floating>Password</ion-label>
+				<ion-input [type]="passwordType" formControlName="password"></ion-input>
+				<ion-icon item-end [name]="passwordIcon" class="passwordIcon" 
+				(click)='hideShowPassword()'></ion-icon>
+			</ion-item>
+			<!--VALIDATION-->
+			<div class="validation-errors">
+				<ng-container *ngFor="let validation of validation_messages.password">
+					<div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+					<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+					</div>
+				</ng-container>
+			</div>
+			<!--VALIDATION-->             
+	      	<ion-button class="login-btn" type="submit" fill="outline" color="light" expand="block" 
+	      	[disabled]="!loginForm.valid">Login</ion-button>
+	      	<p>By signing in or signing up, I agree to myheirstory.com's Terms of Service and Privacy Policy, confirm that I am 18 years of age or older, and consent to receiving email communication.</p>
+	      	<p class="ion-text-center" routerLink="/signup" 
+	      	routerDirection="root">Not Registered? Create an account</p>
+	      	<p class="ion-text-center" routerLink="/forgot-password" routerDirection="root">Forgot Password</p>
+			</div>
+	    </form>
+	  </ion-card-content>
+	</ion-card>
+</ion-content>
+<!-- 
+<ion-content class="bg-transparant">
+  <ion-list inset>
+    <ion-list-header class="heading	 ion-text-center">
+      MEDIX
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="floating" floating>Username</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" floating>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+    <button ion-button outline block class="login-btn" (click)="login_clk()">LOGIN</button>
+    <button ion-button clear block class="signup-btn" (click)="signup_clk()">New User? SIGN UP</button>
+  </ion-list>
+</ion-content>
+ -->

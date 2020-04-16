@@ -1,0 +1,116 @@
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<!--<ion-back-button></ion-back-button>-->
+		</ion-buttons>
+		<ion-title>SignUp</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">	
+	<ion-card class="welcome-card">
+	  <ion-card-content>	  	
+		<ion-row>
+			<ion-col class="ion-no-padding">
+			<ion-button class="log-in-button" color="danger" expand="block" 
+			(click)="doGoogleLogin()">SIGNUP WITH GOOGLE</ion-button>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="ion-no-padding">
+			<ion-button class="log-in-button" color="primary" expand="block" 
+			(click)="doFBLogin()">SIGNUP WITH FACEBOOK</ion-button>
+			</ion-col>
+		</ion-row>
+	    <form [formGroup]="signUpForm" (ngSubmit)="make_me_signup(signUpForm.value)">
+	      <ion-input type="hidden" formControlName="user_type"></ion-input>
+	      	<div class="ion-list">          
+		    	<ion-item lines="none">
+		      		<ion-label position="floating" floating>First Name</ion-label>
+		        	<ion-input type="text" formControlName="first_name"></ion-input>
+		      	</ion-item>
+		      	<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.first_name">
+						<div class="error-message" *ngIf="signUpForm.get('first_name').hasError(validation.type) && (signUpForm.get('first_name').dirty || signUpForm.get('first_name').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+		      	<ion-item lines="none">
+		      		<ion-label position="floating" floating>Last Name</ion-label>
+		        	<ion-input type="text" formControlName="last_name"></ion-input>
+		      	</ion-item>
+		      	<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.last_name">
+						<div class="error-message" *ngIf="signUpForm.get('last_name').hasError(validation.type) && (signUpForm.get('last_name').dirty || signUpForm.get('last_name').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+		      	<ion-item lines="none">
+		      		<ion-label position="floating" floating>Phone Number</ion-label>
+		      	  	<ion-input type="text" formControlName="phone_number"></ion-input>
+		      	</ion-item>
+		      	<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.phone_number">
+						<div class="error-message" *ngIf="signUpForm.get('phone_number').hasError(validation.type) && (signUpForm.get('phone_number').dirty || signUpForm.get('phone_number').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+		      	<ion-item lines="none">
+		      		<ion-label position="floating" floating>Email</ion-label>
+		      	  	<ion-input type="email" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+		      	</ion-item>
+		      	<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.email">
+						<div class="error-message" *ngIf="signUpForm.get('email').hasError(validation.type) && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+				<ion-item lines="none">
+						<ion-label position="floating" floating>Password</ion-label>
+					<ion-input type="password" formControlName="password_1"></ion-input>
+				</ion-item>
+				<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.password_1">
+						<div class="error-message" *ngIf="signUpForm.get('password_1').hasError(validation.type) && (signUpForm.get('password_1').dirty || signUpForm.get('password_1').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+				<ion-item lines="none">
+						<ion-label position="floating" floating>Confirm Password</ion-label>
+					<ion-input type="password" formControlName="password_2"></ion-input>
+				</ion-item>
+				<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.password_2">
+						<div class="error-message" *ngIf="signUpForm.get('password_2').hasError(validation.type) && (signUpForm.get('password_2').dirty || signUpForm.get('password_2').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+				<ion-button type="submit" fill="outline" color="light" expand="block" 
+				[disabled]="!signUpForm.valid" class="login-btn">Register</ion-button>
+				<p>By signing in or signing up, I agree to myheirstory.com's Terms of Service and Privacy Policy, confirm that I am 18 years of age or older, and consent to receiving email communication.</p>
+	      		<p class="ion-text-center" routerLink="/login" 
+	      		routerDirection="root">Already have an account? Login</p>
+	      	</div>
+	    </form>
+	  </ion-card-content>
+	</ion-card>
+</ion-content>

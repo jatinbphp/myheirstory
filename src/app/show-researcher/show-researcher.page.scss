@@ -1,0 +1,36 @@
+/**
+ * Medix (https://www.enappd.com/medix)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source tree.
+ */
+
+ion-header.main_headere{
+    --background: #232277;
+    background: #232277;
+    ion-toolbar{
+      border-bottom: 1px solid #c8c7cc;
+      background: #232277;
+      --background: #232277;
+        ion-title {
+          color: white;
+        }
+        ion-buttons{
+          .filter{
+            background: #fff;
+            padding: 6px 10px;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            ion-icon{
+                padding-left: 7px;
+            }
+          }
+        }
+        ion-menu-button{
+          color: white;
+        }
+    }
+}

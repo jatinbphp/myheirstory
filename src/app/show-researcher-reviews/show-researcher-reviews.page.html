@@ -1,0 +1,136 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>Info</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+<ion-header>
+	<ion-list>
+		<ion-item class="docdetails" lines="none">
+			<ion-avatar item-start  *ngIf="resultData.photo!=null">
+				<img src="{{search_profile_photo_url}}{{resultData.photo}}">
+			</ion-avatar>
+			<ion-avatar item-start  *ngIf="resultData.photo===null">
+				<img src="assets/images/1.png">
+			</ion-avatar>
+			<ion-label>
+				<ion-row class="ion-align-items-end ion-justify-content-between">
+					<ion-col>	
+						<h2>{{resultData.first_name}} {{resultData.last_name}}</h2>
+					</ion-col>
+					<ion-col size="3" class="ion-text-end">	
+						<h2>${{resultData.cost}}</h2>
+					</ion-col>
+				</ion-row>    
+			<ion-row class="ion-align-items-start">
+				<ion-col class="ion-no-padding">	
+					<span *ngFor="let star of [1,2,3,4,5]; let s=index;" class="resultDataRating">
+					<ion-icon name="star" color="warning" *ngIf="star <= resultDataRating"></ion-icon>
+					<ion-icon name="star-outline" color="medium" *ngIf="s >= resultDataRating"></ion-icon>
+					</span>
+				</ion-col>
+				<ion-col size="3" class="ion-no-padding ion-text-right buttonsWrap">
+					<div *ngIf="isAnyLoggedin==0">
+						<ion-button size="small" color="warning" 
+						(click)="login_and_allow_action(resultData.user_id)"><ion-icon name="star"></ion-icon>
+						</ion-button>
+						<!--<ion-button size="small" color="warning" 
+						routerLink="/login" routerDirection="root"><ion-icon name="star"></ion-icon>
+						</ion-button>-->
+					</div>
+					<div *ngIf="isAnyLoggedin==1 && isUserResearcherProjectCompleted==0">		
+						<ion-button size="small" color="warning" 
+						(click)="error_rate_this_heirstorian()">
+						<ion-icon name="star"></ion-icon>
+						</ion-button>
+					</div>
+					<div *ngIf="isAnyLoggedin==1 && isUserResearcherProjectCompleted==1">
+						<ion-button size="small" color="warning" 
+						(click)="rate_this_heirstorian(resultData.user_id)">
+						<ion-icon name="star"></ion-icon></ion-button>
+					</div>
+					<div *ngIf="isAnyLoggedin==0">
+						<ion-button size="small" color="warning" 
+						(click)="login_and_allow_action(resultData.user_id)"><ion-icon name="flag"></ion-icon>
+						</ion-button>
+						<!--<ion-button size="small" color="warning" 
+						routerLink="/login" routerDirection="root"><ion-icon name="flag"></ion-icon>
+						</ion-button>-->
+					</div>
+					<div *ngIf="isAnyLoggedin==1">
+						<ion-button size="small" color="warning" (click)="flag_this_heirstorian(resultData.first_name,resultData.last_name,resultData.email)">
+						<ion-icon name="flag"></ion-icon></ion-button>
+					</div>
+				</ion-col>
+			</ion-row>	
+			</ion-label>
+		</ion-item>
+		<ion-item class="docdetails" lines="none">
+			<ion-row>
+				<ion-col size="6">
+					<div *ngIf="isAnyLoggedin==0">
+						<ion-button color="primary" expand="block" [disabled]="resultData.payment_option == null ? true : false" 
+						(click)="login_and_allow_action(resultData.user_id)">BOOK</ion-button>
+						<!--<ion-button color="primary" expand="block" 
+						routerLink="/login" routerDirection="root">BOOK</ion-button>-->
+					</div>
+					<div *ngIf="isAnyLoggedin==1">
+						<ion-button color="primary" expand="block" [disabled]="resultData.payment_option == null ? true : false" 
+						(click)="book_heirstorian(resultData.user_id)">BOOK</ion-button>
+					</div>
+				</ion-col>
+				<ion-col size="6">
+					<div *ngIf="isAnyLoggedin==0">
+						<ion-button color="primary" expand="block" 
+						(click)="login_and_allow_action(resultData.user_id)">MESSAGE</ion-button>
+						<!--<ion-button color="primary" expand="block" 
+						routerLink="/login" routerDirection="root">MESSAGE</ion-button>-->
+					</div>
+					<div *ngIf="isAnyLoggedin==1">
+						<ion-button color="primary" expand="block" 
+						(click)=message_heirstorian(resultData.user_id)>MESSAGE</ion-button>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+</ion-header>
+<ion-content>
+	<ion-list class="show-researcher-info" *ngIf="isAnyLoggedin == 1">
+		<ion-list-header lines="none"><h4>Reviews</h4></ion-list-header>
+		<ion-item lines="none" *ngFor="let reviews of resultData.rating_data">
+			<ion-avatar item-start *ngIf="reviews.photo!=null">
+				<img src="{{search_profile_photo_url}}{{reviews.photo}}">
+			</ion-avatar>
+			<ion-avatar item-start *ngIf="reviews.photo===null">
+				<img src="assets/images/1.png">
+			</ion-avatar>
+			<div class="info-wrap">
+				<h3>{{reviews.full_name}}</h3>
+				<div class="time-reviewWrap">
+					<div class="ion-no-padding time">
+						<span>
+						<ion-icon name="calendar"></ion-icon>
+						{{reviews.created_at | date: 'MMM'}} 
+						{{reviews.created_at | date: 'dd'}},{{reviews.created_at | date: 'yyyy'}}
+						<ion-icon name="time"></ion-icon>
+						{{reviews.created_at | date: 'hh:mm a'}}</span>
+					</div>
+					<div class="ion-no-padding ion-text-end reviewWrap">
+						<span *ngFor="let star of [1,2,3,4,5]; let s=index;">
+						<ion-icon name="star" color="warning"
+						*ngIf="star <= reviews.rating"></ion-icon>
+						<ion-icon name="star-outline" 
+						color="medium" *ngIf="s >= reviews.rating"></ion-icon>
+						</span>
+					</div>
+				</div>
+				<div class="info" [innerHTML]="reviews.review"></div>
+			</div>
+		</ion-item>
+	</ion-list>
+	<ion-item *ngIf="isAnyLoggedin == 0" lines="none">
+		<ion-text color="dark">
+			<strong>Please login to see reviews</strong>
+		</ion-text>
+	</ion-item>	
+</ion-content>

@@ -1,0 +1,75 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button  slot="icon-only" fill="outline" color="light" (click)="add_invitee()">
+        <ion-icon name="person-add"></ion-icon>
+      </ion-button>           
+    </ion-buttons>    
+    <ion-title>Invite</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">
+	<ion-card class="welcome-card">
+	<ion-card-header class="ion-no-padding">
+		<ion-card-subtitle></ion-card-subtitle>
+		<ion-card-title></ion-card-title>
+	</ion-card-header>
+	<ion-card-content>		
+		<form [formGroup]="inviteForm" (ngSubmit)="invite_all_invitee(inviteForm.value)">
+	  		<ion-input type="hidden" formControlName="email_count"></ion-input>
+	  		<div class="ion-list">	  					  					
+		  		<div *ngFor="let control of inviteForm.controls | keyvalue; let i=index;">
+					<ion-item lines="none" 
+					*ngIf="control.key!='email_subject' && control.key!='email_content' && control.key!='email_count'" class="hasIcon">	
+						<ion-label position="floating" floating>Email Address</ion-label>
+						<ion-input type="email" [formControlName]="control.key" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+						<ion-icon item-end class="passwordIcon" (click)="remove_invitee(control)" 
+						name="close-circle" *ngIf="i > 0"></ion-icon>
+					</ion-item>
+					<!--VALIDATION-->
+					<div class="validation-errors" *ngIf="control.key!='email_subject' && control.key!='email_content' && control.key!='email_count'">
+						<ng-container *ngFor="let validation of validation_messages[control.key]">
+							<div class="error-message" *ngIf="inviteForm.get(control.key).hasError(validation.type) && (inviteForm.get(control.key).dirty || inviteForm.get(control.key).touched)">
+							<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+							</div>
+						</ng-container>
+					</div>
+					<!--VALIDATION-->
+				</div>
+				<ion-item lines="none">
+					<ion-label position="floating" floating>Subject</ion-label>
+					<ion-input type="text" formControlName="email_subject"></ion-input>			
+				</ion-item>
+				<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.email_subject">
+						<div class="error-message" *ngIf="inviteForm.get('email_subject').hasError(validation.type) && (inviteForm.get('email_subject').dirty || inviteForm.get('email_subject').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+				<ion-item lines="none">
+					<ion-label position="floating" floating>Email</ion-label>
+					<ion-textarea type="text" formControlName="email_content"></ion-textarea>
+				</ion-item>
+				<!--VALIDATION-->
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.email_content">
+						<div class="error-message" *ngIf="inviteForm.get('email_content').hasError(validation.type) && (inviteForm.get('email_content').dirty || inviteForm.get('email_content').touched)">
+						<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<!--VALIDATION-->
+		      	<ion-button type="submit" expand="block"  
+		        [disabled]="!inviteForm.valid" class="login-btn">INVITE</ion-button>      	  	
+			</div>
+	    </form>
+	</ion-card-content>
+	</ion-card>
+</ion-content>

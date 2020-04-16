@@ -1,0 +1,42 @@
+<ion-header class="main_headere">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+	  		<!--<ion-back-button></ion-back-button>-->
+		</ion-buttons>		
+		<ion-title>Services</ion-title>
+		<!-- <ion-buttons end>
+	      <button ion-button icon-only (click)="switchStyle()">
+	        <ion-icon name="bulb"></ion-icon>
+	      </button>
+	    </ion-buttons> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item lines="none" *ngIf="uploadedServicesCount < 4">			
+			<ion-col size="12" class="ion-text-right">
+				<ion-button routerLink="/services-add" routerDirection="root" 
+				size="small">Add Service</ion-button>				
+			</ion-col>
+		</ion-item>
+
+		<ion-item lines="none"  *ngFor="let services of resultData; let i=index;">
+			<ion-grid >
+			<ion-row class="ion-align-items-center">
+			<ion-col >{{resultData[i].category_name}}</ion-col>
+			<ion-col class="fixCol">
+				<ion-button (click)="edit_service(resultData[i].id)" size="small">
+			    	<ion-icon name="create"></ion-icon>
+			    </ion-button>
+			    <ion-button (click)="remove_service(resultData[i].id)" 
+			    size="small" *ngIf="resultData[i].type_id!=4">
+			    	<ion-icon name="trash"></ion-icon>
+			    </ion-button>
+			</ion-col>
+			</ion-row>
+		</ion-grid>
+		</ion-item>
+	</ion-list>	
+</ion-content>

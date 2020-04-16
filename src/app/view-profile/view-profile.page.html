@@ -1,0 +1,151 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+        <!--<ion-back-button></ion-back-button>-->
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button  slot="icon-only" fill="outline" color="light" (click)="edit_profile()">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+      <ion-button slot="icon-only" fill="outline" color="light" (click)="presentActionSheet()">
+        <ion-icon name="share"></ion-icon>
+      </ion-button>
+      <ion-button slot="icon-only" fill="outline" color="light" (click)="invite()">
+        <ion-icon name="person-add"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-transparant">
+	<div class="profileImg" ion-fixed>
+		<div class="profile_photo_Wrap">
+			<img class="icon" src="{{profile_photo_url}}{{profile_photo}}" width="150" height="150">
+			<div (click)="getPhoto()" class="editPhotobtn"><ion-icon name="camera"></ion-icon></div>
+		</div>		
+		<h2>{{resultData.first_name}} {{resultData.last_name}}</h2>			
+	</div>
+  	<div class="detailList" *ngIf="user_type=='user'">
+  		<ion-item>			
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Phone Number</h5>
+				{{resultData.phone_no}}
+			</label>			
+		</ion-item>
+		<ion-item>
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Email Address</h5>
+				{{resultData.email}}
+			</label>			
+		</ion-item>		
+		<ion-item>
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Zipcode</h5>
+				{{resultData.zipcode}}
+			</label>			
+		</ion-item>		
+  	</div>
+  	<div class="detailList" *ngIf="user_type=='heirstorian'">
+		<!--<ion-item>
+			<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/like.png">
+			</ion-thumbnail>
+			<span *ngFor="let star of [1,2,3,4,5]; let s=index;" class="resultDataRating">
+				<ion-icon name="star" color="warning" *ngIf="star <= resultDataRating"></ion-icon>
+				<ion-icon name="star-outline" color="medium" *ngIf="s >= resultDataRating"></ion-icon>
+			</span>&nbsp;&nbsp;({{resultNumberOfRating}} Reviews)
+		</ion-item>
+  		<ion-item>						
+			<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>
+			{{resultData.yr_of_experience}} yrs experience
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/money.png">
+			</ion-thumbnail>
+			${{resultData.cost}} Consultation fee
+		</ion-item>-->
+  		<ion-item>			
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Phone Number</h5>
+				{{resultData.phone_no}}
+			</label>			
+		</ion-item>
+		<ion-item>
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Email Address</h5>
+				{{resultData.email}}
+			</label>			
+		</ion-item> 
+		<ion-item>
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Zipcode</h5>
+				{{resultData.zipcode}}
+			</label>			
+		</ion-item>
+		<ion-item>
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Languages</h5>
+				{{resultLanguagesString}}
+			</label>			
+		</ion-item>
+		<ion-item>
+			<!--<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>-->
+			<label>
+				<h5>Region</h5>
+				{{resultRegionsString}}
+			</label>			
+		</ion-item>  		
+		<!--<ion-item>
+			<ion-thumbnail slot="start">
+		    	<img  class="icon" src="assets/imgs/suitcase.png">
+	     	</ion-thumbnail>			
+			{{resultSpecialitiesString}}
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>
+			{{resultQualificationString}}
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>
+			{{resultLanguagesString}}
+		</ion-item>
+		<ion-item>
+			<ion-thumbnail slot="start">
+				<img class="icon" src="assets/imgs/suitcase.png">
+			</ion-thumbnail>
+			{{resultRegionsString}}
+		</ion-item>-->						        
+  	</div>
+</ion-content>

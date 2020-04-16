@@ -1,0 +1,184 @@
+/**
+ * Medix (https://www.enappd.com/medix)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source tree.
+ */
+
+ion-header.main_headere{
+    --background: #232277;
+    background: #232277;
+    ion-toolbar{
+      border-bottom: 1px solid #c8c7cc;
+      background: #232277;
+      --background: #232277;
+        ion-title {
+          color: white;
+        }
+        ion-buttons{
+          .filter{
+            background: #fff;
+            padding: 6px 10px;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            ion-icon{
+                padding-left: 7px;
+            }
+          }
+        }
+        ion-menu-button{
+          color: white;
+        }
+    }
+}
+
+ion-header{
+    border-bottom: 1px solid #c8c7cc;
+    ion-row{
+        width: 100%;
+    }
+    ion-list{margin-bottom: auto;}
+
+
+    ion-col.buttonsWrap {
+        width: 100px !important;
+        flex: 0 0 auto !important;
+        max-width: none !important;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .docdetails  {
+        padding-bottom: 10px;
+        ion-avatar{
+            background: #ccc;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            align-self: flex-start;
+            margin-top: 10px;
+        }
+        ion-label{
+            padding-left: 12px;
+            h2{
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+    .resultDataRating{
+        ion-icon{
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+
+ion-content{
+    background: transparent;
+    --background: transparent;
+    
+    ion-card{
+        --background: transparent;
+        background: transparent;
+        box-shadow: none;
+        border: 0 none;
+        ion-card-content{
+        border: 0 none;
+        padding: 0;        
+        --background: transparent;
+        background: transparent;
+        box-shadow: none;
+        color:#fff;
+        }
+    }
+
+    .ion-list{
+    --background: transparent;
+    background: transparent;
+    margin: auto auto 30px;
+        .heading {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 13px 8px 13px 0px;
+            justify-content: center;
+            color:#fff;
+        }
+
+        ion-item {
+            --background: transparent;
+            background: transparent;
+            color:#000;
+            padding: 0;
+            --padding: 0;
+            --ion-padding: 0;
+            --inner-padding-end: 0px;
+            --padding-start:0px;
+            .label {
+                color: #000;
+            }
+            ion-textarea,
+            ion-select,
+            ion-input{
+                border-bottom: 1px solid #c8c7cc;
+            }
+            .inp-labels {
+                padding-left: 10px;
+            }
+            .profile_photo_Wrap{
+                max-width: 50%;
+                margin: 30px auto 0;
+                position: relative;
+                img{
+                    display: block;
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    background-color: #e2e0e0;
+                }
+                .editPhotobtn {
+                    position: absolute;
+                    bottom:5px;
+                    right:5px;
+                    ion-icon {
+                        width: 18px;
+                        height: 18px;
+                        background: #fff;
+                        border-radius: 50%;
+                        padding: 10px;
+                        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+                    }
+                }
+            }
+        }
+        .login-btn {
+            margin-top: 25px;
+        }
+
+        .signup-btn {
+            color: #000;
+        }
+
+        .item-input ion-input {
+            color: #000;
+        }
+
+        .item .label[floating] {
+            color: #000;
+        }
+
+        .error-message
+        {
+          color: red;
+          font-size: 14px;
+          /*margin-left: 10px;*/
+          margin-top: 10px;
+        }
+    }
+}
+

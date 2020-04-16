@@ -1,0 +1,35 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!--<ion-menu-button></ion-menu-button>-->
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>	
+	<ion-item *ngIf="resultData?.length === 0" lines="none">
+		<p class="item item-text-wrap">No payments found.</p>
+	</ion-item>
+	<ion-list *ngFor="let bookings of resultData; let i=index;" class="messageList">
+		<ion-item lines="none" class="ion-no-padding">
+			<div class="messageList-box unread">
+				<div class="messageList-header">
+					<span class="messagesAuth">#{{ bookings.booking_id }}</span>
+					<span class="messagesAuth">${{ bookings.researcher_amount_paid }}</span>
+				</div>				
+				<div class="messageList-content justify-space-between">
+					<span class="messagesAuth">{{bookings.transaction_id}}</span>
+					<span class="messagesAuth">
+					<img class="stripeBtn" src="./assets/images/paypal-logo.png" width="50" *ngIf="bookings.booking_payment_option=='paypal'">
+					<img class="stripeBtn" src="./assets/images/stripe-logo.png" width="50" *ngIf="bookings.booking_payment_option=='stripe'">
+					</span>
+				</div>
+				<div class="messageList-header">
+				<span class="messagesAuth">{{ bookings.researcher_account_id_paid_with }}</span>
+				</div>				
+			</div>
+		</ion-item>			
+	</ion-list>	
+</ion-content>

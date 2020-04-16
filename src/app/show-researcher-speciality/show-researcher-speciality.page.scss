@@ -1,0 +1,60 @@
+ion-header{
+    border-bottom: 1px solid #c8c7cc;
+	ion-row{
+		width: 100%;
+	}
+	ion-list{margin-bottom: auto;}
+
+
+	ion-col.buttonsWrap {
+	    width: 100px !important;
+	    flex: 0 0 auto !important;
+	    max-width: none !important;
+	    display: flex;
+	    justify-content: flex-end;
+	}
+
+    .docdetails  {
+		ion-avatar{
+		    background: #ccc;
+		    border-radius: 50%;
+		    width: 70px;
+		    height: 70px;
+	        align-self: flex-start;
+		    margin-top: 10px;
+		}
+    	ion-label{
+	        padding-left: 12px;
+	        h2{
+	        	font-size: 18px;
+	        	font-weight: bold;
+	        }
+    	}
+    }
+    .resultDataRating{
+    	ion-icon{
+    		width: 22px;
+    		height: 22px;
+    	}
+    }
+}
+
+.show-researcher-info{
+	ion-item{
+		 border-bottom: 1px solid #c8c7cc;
+		ion-label{
+			white-space: nowrap;
+			h3{
+				font-size:16px;
+				font-weight: bold;
+				color:#000;
+			}
+			.info{
+				font-size:14px;
+				font-weight:normal;
+				color:#333;
+				white-space: nowrap;
+			}
+		}
+	}
+}

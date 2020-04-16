@@ -1,0 +1,31 @@
+<ion-header class="main_headere">
+  <ion-toolbar>
+    <ion-buttons slot="start">      	
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons fill="clear" slot="end" (click)="show_heirstorian_info()">
+      	<img src="./assets/imgs/info.png">
+      	<!--<ion-icon name="information-circle"></ion-icon>-->
+    </ion-buttons>
+    <ion-title>Show Researcher</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-tabs>
+	<ion-tab-bar slot="bottom">
+		<ion-tab-button tab="show-researcher-info">
+			<ion-icon name="information-circle"></ion-icon>
+			<ion-label>Info</ion-label>
+		</ion-tab-button>
+		<ion-tab-button tab="show-researcher-speciality">
+			<ion-icon name="school"></ion-icon>
+			<ion-label>Speciality</ion-label>
+		</ion-tab-button>
+		<ion-tab-button tab="show-researcher-reviews">
+			<ion-icon name="albums"></ion-icon>
+			<ion-label>Reviews</ion-label>
+		</ion-tab-button>	
+	</ion-tab-bar>
+	</ion-tabs>
+</ion-content>
