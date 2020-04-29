@@ -178,7 +178,8 @@ export class BookingPaymentsPage implements OnInit
 						booking_id:this.booking_id, 
 						booking_payment_status:'1',
 						transaction_id:resultObj.id,
-						booking_payment_option:'strip'
+						booking_payment_option:'strip',
+						booking_status:'1'
 					}
 					this.client.update_payment_information_for_paypal(paymentUpdationToPaid)
 					.then(resultUpdate => 
@@ -268,7 +269,8 @@ export class BookingPaymentsPage implements OnInit
 							booking_id:this.booking_id, 
 							booking_payment_status:'1',
 							transaction_id:res.response.id,
-							booking_payment_option:'paypal'
+							booking_payment_option:'paypal',
+							booking_status:'1'
 						}
 						this.client.update_payment_information_for_paypal(paymentUpdationToPaid)
 						.then(resultUpdate => 

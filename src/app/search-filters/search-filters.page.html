@@ -38,21 +38,21 @@
 					value="{{hr_options.key}}">{{hr_options.value}}</ion-select-option>
 				</ion-select>
 			</ion-item>		
-			<ion-item lines="none">
+			<!--<ion-item lines="none">
 				<ion-label position="floating" floating>States</ion-label>
 				<ion-select multiple="true" formControlName="states">
 					<ion-select-option *ngFor="let states of config_states | keyvalue" 
 					value="{{states.key}}">{{states.value}}</ion-select-option>
 				</ion-select>
-			</ion-item>
+			</ion-item>-->
 			<!--VALIDATION-->
-			<div class="validation-errors">
+			<!--<div class="validation-errors">
 				<ng-container *ngFor="let validation of validation_messages.states">
 					<div class="error-message" *ngIf="SearchMainForm.get('states').hasError(validation.type) && (SearchMainForm.get('states').dirty || SearchMainForm.get('states').touched)">
 					<ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
 					</div>
 				</ng-container>
-			</div>
+			</div>-->
 			<!--VALIDATION-->
 			<ion-item lines="none">
 				<ion-label position="floating" floating>Specialties</ion-label>
