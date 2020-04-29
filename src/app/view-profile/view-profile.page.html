@@ -22,7 +22,10 @@
 <ion-content class="bg-transparant">
 	<div class="profileImg" ion-fixed>
 		<div class="profile_photo_Wrap">
-			<img class="icon" src="{{profile_photo_url}}{{profile_photo}}" width="150" height="150">
+			<img class="icon" src="{{profile_photo_url}}{{profile_photo}}" width="150" 
+			height="150" *ngIf="profile_photo != null">
+			<img class="icon" src="assets/images/1.png" width="150" 
+			height="150" *ngIf="profile_photo === null">
 			<div (click)="getPhoto()" class="editPhotobtn"><ion-icon name="camera"></ion-icon></div>
 		</div>		
 		<h2>{{resultData.first_name}} {{resultData.last_name}}</h2>			
