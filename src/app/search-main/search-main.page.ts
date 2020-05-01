@@ -42,6 +42,7 @@ export class SearchMainPage implements OnInit
 
 	public resultData:any=[];
 	public resultDataRating:any=[];
+	public resultDataServices:any=[];
 	public resultSpeciality:any=[];
 	search_profile_photo_url: string="";	
 
@@ -154,7 +155,7 @@ export class SearchMainPage implements OnInit
 			//[STAR RATING] [SPECIALITY @ REPLACE WITH ,]
 			this.resultDataRating=[];			
 			this.resultSpeciality=[];
-
+			this.resultDataServices=[];
 			for(let i=0;i < this.resultData.length;i++)
 			{
 				let objRating={};				
@@ -190,7 +191,21 @@ export class SearchMainPage implements OnInit
 					objSpeciality[this.resultData[i].user_id]="";
 					this.resultSpeciality.push(objSpeciality);
 				}
+
+
+				let objResearcherServices=[];	
+				if(this.resultData[i].service_data.length > 0)
+				{					
+					for(let sr=0;sr < this.resultData[i].service_data.length;sr++)
+					{
+						objResearcherServices[sr]=this.client.config_services_icons[this.resultData[i].service_data[sr].type_id];
+					}
+					this.resultDataServices[this.resultData[i].user_id]=objResearcherServices;
+				}
+				
+				
 			}
+			//console.log(this.resultDataServices);
 			//console.log(this.resultDataRating);
 			//[STAR RATING] [SPECIALITY @ REPLACE WITH ,]
 			

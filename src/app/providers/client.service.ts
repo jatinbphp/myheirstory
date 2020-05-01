@@ -205,7 +205,16 @@ export class ClientService
 		'West Virginia': 'West Virginia',
 		'Wisconsin': 'Wisconsin',
 		'Wyoming': 'Wyoming'
-	};	
+	};
+	
+	config_services_icons: { [key: string]: string } =
+	{
+		'2': 'adoption-hover.png',
+		'3': 'dna-research-hover.png',
+		'4': 'genealogyResearch-hover.png',
+		'6': 'immigrationRecords-hover.png'
+		
+	};
 
 	site_url: string ="https://myheirstory.com/";//http://myheirstory.zoom-technologies.co/
 	api_url: string = "https://admin.myheirstory.com/api/";

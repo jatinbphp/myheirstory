@@ -38,11 +38,10 @@
       <p>{{resultSpeciality[i][heirstorian.user_id]}}</p>
     </ion-item>
     <ion-item lines="none">
-      <div class="docimg"><img src="/assets/imgs/hospital (1).png"></div>
-      <div class="docimg"><img src="assets/imgs/medical-tools.png"></div>
-      <div class="docimg"><img src="assets/imgs/microscope.png"></div>
-      <div class="docimg"><img src="assets/imgs/saline.png"></div>
-      <div class="docimg"><img src="assets/imgs/hospital.png"></div>
+      <div class="docimg" 
+      *ngFor="let serviceicons of resultDataServices[heirstorian.user_id] | keyvalue">
+        <img src="/assets/imgs/icon-services/{{serviceicons.value}}" width="30">
+      </div>            
     </ion-item>
     <ion-item lines="none">
       <div>{{heirstorian.yr_of_experience}} yrs exp <div class="dot"></div> ${{heirstorian.cost}}/hr 
