@@ -58,6 +58,7 @@
     "es6-promise-plugin": "4.2.2",
     "ionic-plugin-deeplinks": "1.0.20",
     "ionic4-star-rating": "^1.1.0",
+    "moment": "^2.25.2",
     "rxjs": "~6.5.1",
     "signature_pad": "^3.0.0-beta.3",
     "tslib": "^1.9.0",

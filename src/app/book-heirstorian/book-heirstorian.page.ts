@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ClientService } from '../providers/client.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { NavigationExtras } from '@angular/router';
+import * as moment from 'moment/moment';
 
 @Component({
 	selector: 'app-book-heirstorian',
@@ -60,9 +61,10 @@ export class BookHeirstorianPage implements OnInit
 
 	async ionViewWillEnter() 
 	{
-		this.dateToday = new Date().toISOString();
-		this.dateToday = this.datepipe.transform(this.dateToday, 'yyyy-MM-dd HH:mm:ss');
-
+		//this.dateToday = new Date().toISOString();
+		//this.dateToday = this.datepipe.transform(this.dateToday, 'yyyy-MM-dd HH:mm:ss');
+		this.dateToday = moment().format('YYYY-MM-DD HH:mm:ss');		
+		
 		this.search_profile_photo_url=this.client.search_profile_photo_url;
 		this.route.queryParams.subscribe(params => 
 		{
@@ -167,8 +169,11 @@ export class BookHeirstorianPage implements OnInit
 		await loading.present();
 		//LOADER
 
-		let booking_date_converted =this.datepipe.transform(form.booking_date, 'yyyy-MM-dd HH:mm:ss');		
-
+		/*
+		let booking_date_converted=this.datepipe.transform(form.booking_date, 'yyyy-MM-dd HH:mm:ss');
+		*/
+		let booking_date_converted=moment(form.booking_date).format('YYYY-MM-DD HH:mm:ss');	
+		
 		/*
 		INITILIZED ON INIT
 		this.dateToday = new Date().toISOString();

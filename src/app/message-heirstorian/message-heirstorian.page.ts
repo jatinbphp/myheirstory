@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ClientService } from '../providers/client.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { NavigationExtras } from '@angular/router';
+import * as moment from 'moment/moment';
 
 @Component({
 	selector: 'app-message-heirstorian',
@@ -36,8 +37,11 @@ export class MessageHeirstorianPage implements OnInit
 
 	async ngOnInit() 
 	{
+		/*
 		this.dateToday = new Date().toISOString();
 		this.dateToday = this.datepipe.transform(this.dateToday, 'yyyy-MM-dd HH:mm:ss');
+		*/
+		this.dateToday = moment().format('YYYY-MM-DD HH:mm:ss');		
 
 		this.search_profile_photo_url=this.client.search_profile_photo_url;
 		this.route.queryParams.subscribe(params => 
@@ -101,7 +105,10 @@ export class MessageHeirstorianPage implements OnInit
 		await loading.present();
 		//LOADER
 
-		let contact_on_date_converted =this.datepipe.transform(form.contact_on_date, 'yyyy-MM-dd HH:mm:ss');
+		/*
+		let contact_on_date_converted=this.datepipe.transform(form.contact_on_date, 'yyyy-MM-dd HH:mm:ss');
+		*/
+		let contact_on_date_converted=moment(form.contact_on_date).format('YYYY-MM-DD HH:mm:ss');
 		
 		/*
 		INITILIZED ON INIT
