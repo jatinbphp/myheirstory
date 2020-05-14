@@ -6,7 +6,7 @@
 	        <ion-icon name="bulb"></ion-icon>
 	      </button>
 	    </ion-buttons>-->
-	    <ion-button class="padding-right" slot="end" fill="solid" color="primary" size="small" 
+	    <ion-button class="padding-right" slot="end" fill="solid" color="purple" size="small" 
 	    (click)="show_booking_payment_information()">Payments</ion-button>
 	</ion-toolbar>
 </ion-header>
@@ -50,19 +50,19 @@
 					<ion-icon name="ios-close-circle-outline" 
 					*ngIf="bookings.booking_status=='0'"></ion-icon>			    	
 			    	<!--ACTIONS-->
-			    	<ion-icon color="primary" slot="icon-only" name="ios-checkmark-circle-outline" 
+			    	<ion-icon color="purple" slot="icon-only" name="ios-checkmark-circle-outline" 
 			    	*ngIf="bookings.booking_status=='1'" 
 			    	(click)="disApproveBookingConfirm(bookings.booking_id)"></ion-icon>
-					<ion-icon color="primary" slot="icon-only" name="ios-close-circle-outline" 
+					<ion-icon color="purple" slot="icon-only" name="ios-close-circle-outline" 
 					*ngIf="bookings.booking_status=='0'" 
 					(click)="approveBookingConfirm(bookings.booking_id)"></ion-icon>
-			    	<ion-icon color="primary" slot="icon-only" name="arrow-round-up" 
+			    	<ion-icon color="purple" slot="icon-only" name="arrow-round-up" 
 			    	*ngIf="bookings.booking_completion.length > 0 && bookings.booking_completion[0] == ''" 
 			    	(click)="uploadCompletionDocument(bookings.booking_id,bookings.email)"></ion-icon>		    	
-			    	<ion-icon color="primary" slot="icon-only" name="document" 
+			    	<ion-icon color="purple" slot="icon-only" name="document" 
 			    	*ngIf="bookings.booking_completion[0] !='' && bookings.booking_completion[0].complition_document_heirstorian !=''" 
 			    	(click)="show_completion_document(bookings.booking_id,bookings.email)"></ion-icon>
-			    	<ion-icon color="primary" slot="icon-only" name="trash" 
+			    	<ion-icon color="purple" slot="icon-only" name="trash" 
 			    	(click)="deleteConfirm(bookings.booking_id)"></ion-icon>
 			    	<!--ACTIONS-->
 				</div>

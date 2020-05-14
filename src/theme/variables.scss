@@ -74,6 +74,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** custom purple **/
+  --ion-color-purple: #800080;
+  --ion-color-purple-rgb: 128,0,128;
+  --ion-color-purple-contrast: #ffffff;
+  --ion-color-purple-contrast-rgb: 255,255,255;
+  --ion-color-purple-shade: #710071;
+  --ion-color-purple-tint: #8d1a8d;
 }
 
 app-login.ion-page,
@@ -109,4 +117,14 @@ ion-buttons ion-back-button{
 
 ion-header.main_headere ion-toolbar ion-buttons ion-back-button{
   color:#fff !important;
+}
+
+.ion-color-purple 
+{
+--ion-color-base: var(--ion-color-purple) !important;
+--ion-color-base-rgb: var(--ion-color-purple-rgb) !important;
+--ion-color-contrast: var(--ion-color-purple-contrast) !important;
+--ion-color-contrast-rgb: var(--ion-color-purple-contrast-rgb) !important;
+--ion-color-shade: var(--ion-color-purple-shade) !important;
+--ion-color-tint: var(--ion-color-purple-tint) !important;
 }

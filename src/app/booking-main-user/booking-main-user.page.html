@@ -47,13 +47,13 @@
 					*ngIf="bookings.booking_status=='1'"></ion-icon>
 					<ion-icon name="ios-close-circle-outline" 
 					*ngIf="bookings.booking_status=='0'"></ion-icon>		    	
-			    	<ion-icon color="primary" slot="icon-only" name="document" 
+			    	<ion-icon color="purple" slot="icon-only" name="document" 
 			    	*ngIf="bookings.booking_completion.length > 0 && bookings.booking_completion[0].booking_completion_status==1" 
 			    	(click)="show_completion_document(bookings.booking_id,bookings.email)"></ion-icon>
 			    	<ion-icon color="danger" slot="icon-only" name="alarm" 
 			    	*ngIf="bookings.booking_completion.length > 0 && bookings.booking_completion[0].booking_completion_status==0" 
 			    	(click)="show_completion_document(bookings.booking_id,bookings.email)"></ion-icon>
-			    	<ion-icon color="primary" slot="icon-only" name="trash" 
+			    	<ion-icon color="purple" slot="icon-only" name="trash" 
 			    	(click)="deleteConfirm(bookings.booking_id)"></ion-icon>
 				</div>
 			</div>

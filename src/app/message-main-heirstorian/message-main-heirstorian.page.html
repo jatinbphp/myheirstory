@@ -33,11 +33,11 @@
 					*ngIf="messages.message_complete_status=='Completed'"></ion-icon>				
 					<ion-icon name="ios-close-circle-outline" 
 					*ngIf="messages.message_complete_status=='Incompleted'"></ion-icon>-->			    	
-			    	<ion-icon color="primary" slot="icon-only" name="create" (click)="show_message_thread(messages.question_sku,'Researcher')" 
+			    	<ion-icon color="purple" slot="icon-only" name="create" (click)="show_message_thread(messages.question_sku,'Researcher')" 
 			    	*ngIf="messages.message_complete_status=='Completed'"></ion-icon>
 			    	<ion-icon color="danger" slot="icon-only" name="create" (click)="show_message_thread(messages.question_sku,'Researcher')" 
 			    	*ngIf="messages.message_complete_status=='Incompleted'"></ion-icon>		    	
-			    	<ion-icon color="primary" slot="icon-only" name="trash" (click)="deleteConfirm(messages.message_id)" ></ion-icon>
+			    	<ion-icon color="purple" slot="icon-only" name="trash" (click)="deleteConfirm(messages.message_id)" ></ion-icon>
 				</div>
 			</div>
 		</ion-item>			

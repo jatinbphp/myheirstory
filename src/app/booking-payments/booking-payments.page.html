@@ -87,7 +87,7 @@
         </ng-container>
       </div>
       <!--VALIDATION-->
-      <ion-button type="submit" color="primary" [disabled]="!paymentWithStripForm.valid">Pay Now</ion-button>
+      <ion-button type="submit" color="purple" [disabled]="!paymentWithStripForm.valid">Pay Now</ion-button>
       <ion-button color="danger" (click)="cancel_my_booking(booking_id)">Cancel</ion-button>
     </div>        
   	</form>
@@ -97,7 +97,7 @@
   <ion-card-content class="bg-transparant"> 
     <h2>Pay with PAYPAL</h2>      
     <div class="ion-list">
-      <ion-button color="primary" (click)="payWithPaypal()">Pay Now</ion-button>
+      <ion-button color="purple" (click)="payWithPaypal()">Pay Now</ion-button>
       <ion-button color="danger" (click)="cancel_my_booking(booking_id)">Cancel</ion-button>
     </div>
   </ion-card-content>

@@ -35,9 +35,9 @@
 				*ngIf="messages.message_status=='0'"></ion-icon>-->
 		    	<ion-icon color="danger" slot="icon-only" name="eye" (click)="show_message_thread(messages.question_sku,'User')" 
 		    	*ngIf="messages.message_complete_status=='Incompleted'"></ion-icon>		    	
-		    	<ion-icon color="primary" slot="icon-only" name="eye" (click)="show_message_thread(messages.question_sku,'User')" 
+		    	<ion-icon color="purple" slot="icon-only" name="eye" (click)="show_message_thread(messages.question_sku,'User')" 
 		    	*ngIf="messages.message_complete_status=='Completed'"></ion-icon>
-		    	<ion-icon color="primary" slot="icon-only" name="trash" 
+		    	<ion-icon color="purple" slot="icon-only" name="trash" 
 		    	(click)="deleteConfirm(messages.message_id)" ></ion-icon>
 			</div>
 			</div>

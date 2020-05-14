@@ -68,25 +68,25 @@
 			<ion-row>
 				<ion-col size="6">
 					<div *ngIf="isAnyLoggedin==0">
-						<ion-button color="primary" expand="block" [disabled]="resultData.payment_option == null ? true : false" 
+						<ion-button color="purple" expand="block" [disabled]="resultData.payment_option == null ? true : false" 
 						(click)="login_and_allow_action(resultData.user_id)">BOOK</ion-button>
 						<!--<ion-button color="primary" expand="block" 
 						routerLink="/login" routerDirection="root">BOOK</ion-button>-->
 					</div>
 					<div *ngIf="isAnyLoggedin==1">
-						<ion-button color="primary" expand="block" [disabled]="resultData.payment_option == null ? true : false" 
+						<ion-button color="purple" expand="block" [disabled]="resultData.payment_option == null ? true : false" 
 						(click)="book_heirstorian(resultData.user_id)">BOOK</ion-button>
 					</div>
 				</ion-col>
 				<ion-col size="6">
 					<div *ngIf="isAnyLoggedin==0">
-						<ion-button color="primary" expand="block" 
+						<ion-button color="purple" expand="block" 
 						(click)="login_and_allow_action(resultData.user_id)">MESSAGE</ion-button>
 						<!--<ion-button color="primary" expand="block" 
 						routerLink="/login" routerDirection="root">MESSAGE</ion-button>-->
 					</div>
 					<div *ngIf="isAnyLoggedin==1">
-						<ion-button color="primary" expand="block" 
+						<ion-button color="purple" expand="block" 
 						(click)=message_heirstorian(resultData.user_id)>MESSAGE</ion-button>
 					</div>
 				</ion-col>

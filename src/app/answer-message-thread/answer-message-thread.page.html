@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="bg-transparant">
+<ion-content class="bg-transparant" padding>
 	<form [formGroup]="answerToQuestionForm" (ngSubmit)="answer_to_question(answerToQuestionForm.value)">
   		<ion-input type="hidden" formControlName="message_id"></ion-input>
   		<ion-input type="hidden" formControlName="heirstorian_id"></ion-input>
@@ -25,7 +25,7 @@
         </ng-container>
       </div>
       <!--VALIDATION-->			             
-    	<ion-button class="login-btn" type="submit" expand="block" 
+    	<ion-button class="login-btn" type="submit" expand="block" color="purple" 
     	[disabled]="!answerToQuestionForm.valid">Answer</ion-button>      	
 		</div>
     </form>
