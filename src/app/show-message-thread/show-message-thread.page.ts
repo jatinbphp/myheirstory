@@ -24,7 +24,7 @@ export class ShowMessageThreadPage implements OnInit
 	public parent_id: number;	
 	public question_sku: string;
 	public contact_on_date: any;
-
+	
 	public askQuestionForm = this.fb.group({
 		messate_to_heirstorian: ['', Validators.required],
 		parent_id: ['', Validators.required],
@@ -148,7 +148,7 @@ export class ShowMessageThreadPage implements OnInit
 			this.askQuestionForm.controls['parent_id'].setValue(this.parent_id);
 			this.askQuestionForm.controls['question_sku'].setValue(this.question_sku);
 			this.askQuestionForm.controls['contact_on_date'].setValue(this.contact_on_date);
-			//console.log(this.resultData);						
+			console.log(this.resultData);						
 		},
 		error => 
 		{

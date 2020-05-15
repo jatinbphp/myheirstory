@@ -11,7 +11,8 @@
 	<div class="message-wrap">
       <div *ngFor="let msg of resultData" class="message">
         <div class="message-left">
-            <img class="user-img" alt="" src="./assets/imgs/boy.png">
+            <img class="user-img" alt="" src="{{msg.user_photo}}">
+            <!--<img class="user-img" alt="" src="./assets/imgs/boy.png">-->
             <!--<ion-spinner name="dots" *ngIf="msg.message_status === 0"></ion-spinner>-->
             <div class="msg-detail">
               <div class="msg-info">
@@ -24,7 +25,8 @@
             </div>          
         </div>
         <div class="message-right">
-          <img class="user-img" alt="" src="./assets/imgs/android.png">
+          <img class="user-img" alt="" src="{{msg.heistorian_photo}}">
+          <!--<img class="user-img" alt="" src="./assets/imgs/android.png">-->
           <div class="msg-detail">            
             <div class="msg-info" *ngIf="msg.message_status == 0">
               <p *ngIf="tab_selected=='User'">Awaiting Reply</p>
