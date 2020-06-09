@@ -168,7 +168,7 @@ export class UploadCompletionDocumentPage implements OnInit
 
 		upload_options.params = other_required_parameters;
 
-		//http://myheirstory.zoom-technologies.co/experi.php
+		//https://myheirstory.zoom-technologies.co/experi.php
 		this.fileTransfer.upload(form.sourse_file_path,this.client.api_url+"user/completion/save", upload_options, true).then((res) => 
 		{
 			//console.log("file uploaded successfully.", res)			

@@ -222,7 +222,7 @@ export class ClientService
 	stripe_key = 'pk_test_V67QexJKsEmiT7sVh3Ia3ph400DaprbQuu';//pk_live_A8QXADaPagWC3iP4C5teaCbk00Tbflip2H
 	paypal_environment_production = 'AQvntXAubSqPbi9ZsYMKAULzoJuXqfmJzwtX81plllsR0MXc-ZrLlsb-3Px-CEBoC0VmhuJsJOaHAe8D';
 	paypal_environment_sandbox =  'AXMHOinXXGQ7AZiJMON59YRFr9w7qBlYAyVxOQAQroO-3bICUwm4Iz4B2DEWbYo3FInHrakots09_PQ3';
-	search_profile_photo_url: string = "http://admin.myheirstory.com/user_photo/";
+	search_profile_photo_url: string = "https://admin.myheirstory.com/user_photo/";
 	//BEFORE::http://zoom-technologies.co/mhs/public/user_photo/
 	site_commision : number =7;
 	flag_this_researcher_admin_email: string = "support@myheirstory.com";

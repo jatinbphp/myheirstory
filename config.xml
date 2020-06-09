@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.myheirstory" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.myheirstory" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MyHeirStory</name>
     <description>Whether you need help understanding our DNA results or wanting to grow your family tree, MyHeirStory connects you with genealogists who will treat your research as their own family project.</description>
     <author email="myheirstoryadm@gmail.com" href="https://myheirstory.com/">MyHeirStory Team</author>

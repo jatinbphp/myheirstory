@@ -143,7 +143,7 @@ export class ViewProfilePage implements OnInit
 			this.social_message="MyHeirStory is just fantastic!";
 			this.social_subject=" ";
 			this.social_image=this.client.search_profile_photo_url+this.resultData['photo'];
-			this.social_url="http://myheirstory.com/";
+			this.social_url=this.client.site_url;
 			
 			//console.log(this.resultData);
 		},
@@ -164,6 +164,7 @@ export class ViewProfilePage implements OnInit
 		this.social_message="Checkout My Profile\n";
 		this.social_message += this.resultData.first_name +" "+this.resultData.last_name;		
 		this.social_message +="\nJoin MyHeirStory Today";
+		
 		const actionSheet = await this.actionSheetCtrl.create({
 		header: 'SHARE WITH',
 		buttons: [

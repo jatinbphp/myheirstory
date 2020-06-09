@@ -273,11 +273,11 @@ export class PaymentInformationPage implements OnInit
 		};
 
 		let target = "_system";
-		this.inAppBrowser.create("https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FqKtwsSqUBI5gk5p9RTWUZjBIDDOOS8d&scope=read_write&redirect_uri=http://myheirstory.com/authenticate_stripe_account_ionic.php",target,options);
+		this.inAppBrowser.create("https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FqKtwsSqUBI5gk5p9RTWUZjBIDDOOS8d&scope=read_write&redirect_uri=https://myheirstory.com/authenticate_stripe_account_ionic.php",target,options);
 		
 
 		/*
-		const browser = this.inAppBrowser.create('https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FqKtwsSqUBI5gk5p9RTWUZjBIDDOOS8d&scope=read_write&redirect_uri=http://myheirstory.com/authenticate_stripe_account_ionic.php','_blank',
+		const browser = this.inAppBrowser.create('https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FqKtwsSqUBI5gk5p9RTWUZjBIDDOOS8d&scope=read_write&redirect_uri=https://myheirstory.com/authenticate_stripe_account_ionic.php','_blank',
 		{location:'no',clearcache:'yes',toolbar:'no'});
 		browser.on('loadstart').subscribe(function(event)
 		{
